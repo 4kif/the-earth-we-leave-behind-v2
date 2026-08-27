@@ -480,3 +480,38 @@ function loadInitialPage() {
 
 
 loadInitialPage();
+
+/* ========================================
+   3 DOT MENU
+======================================== */
+
+const menuToggle = document.getElementById("menuToggle");
+const dotMenu = document.getElementById("dotMenu");
+
+if (menuToggle && dotMenu) {
+
+    menuToggle.addEventListener("click", function () {
+
+        dotMenu.classList.toggle("active");
+
+    });
+
+}
+
+
+/* CLOSE MENU WHEN CLICK OUTSIDE */
+
+document.addEventListener("click", function (event) {
+
+    if (
+        dotMenu &&
+        menuToggle &&
+        !dotMenu.contains(event.target) &&
+        !menuToggle.contains(event.target)
+    ) {
+
+        dotMenu.classList.remove("active");
+
+    }
+
+});
