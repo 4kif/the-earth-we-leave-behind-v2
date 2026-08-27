@@ -1,76 +1,271 @@
+/* ==================================================
+   PAGE NAVIGATION
+================================================== */
 
-/* =========================
-   SCROLL REVEAL
-========================= */
+const mainNav =
+    document.getElementById("mainNav");
 
-const revealElements = document.querySelectorAll(
-    ".info-card, .cause, .impact-item, .solution-card, .stat, .sustainability-card"
-);
+const menuToggle =
+    document.getElementById("menuToggle");
+
+const dotMenu =
+    document.getElementById("dotMenu");
+
+const pages =
+    document.querySelectorAll("body > section");
+
+const menuLinks =
+    document.querySelectorAll(".dot-menu a");
+
+const exploreButtons =
+    document.querySelectorAll(".explore-button");
 
 
-const revealObserver = new IntersectionObserver(
 
-    (entries) => {
+/* ==================================================
+   SHOW PAGE
+================================================== */
 
-        entries.forEach((entry) => {
+function showPage(id, showNavigation = true) {
 
-            if (entry.isIntersecting) {
+    const target =
+        document.querySelector(id);
 
-                entry.target.classList.add("show");
+    if (!target) return;
 
-                revealObserver.unobserve(entry.target);
 
-            }
+    /* REMOVE ACTIVE FROM ALL */
 
-        });
+    pages.forEach((page) => {
 
-    },
+        page.classList.remove("page-active");
 
-    {
-        threshold: 0.15
+    });
+
+
+    /* SHOW TARGET */
+
+    target.classList.add("page-active");
+
+
+    /* CLOSE MENU */
+
+    if (dotMenu) {
+
+        dotMenu.classList.remove("active");
+
     }
 
-);
+
+    /* SHOW / HIDE NAVIGATION */
+
+    if (showNavigation) {
+
+        mainNav.classList.add("menu-visible");
+
+    } else {
+
+        mainNav.classList.remove("menu-visible");
+
+    }
 
 
-revealElements.forEach((element) => {
+    /* RESET PAGE POSITION */
 
-    element.style.opacity = "0";
+    target.scrollTop = 0;
 
-    element.style.transform = "translateY(30px)";
 
-    element.style.transition =
-        "opacity 0.7s ease, transform 0.7s ease";
+    /* UPDATE URL */
 
-    revealObserver.observe(element);
+    history.replaceState(
+        null,
+        "",
+        id
+    );
+
+}
+
+
+
+/* ==================================================
+   EXPLORE BUTTON
+================================================== */
+
+exploreButtons.forEach((button) => {
+
+    button.addEventListener(
+        "click",
+        function(event) {
+
+            event.preventDefault();
+
+            const target =
+                this.getAttribute("href");
+
+            showPage(
+                target,
+                true
+            );
+
+        }
+    );
 
 });
 
 
-const style = document.createElement("style");
 
-style.innerHTML = `
+/* ==================================================
+   3 DOT MENU
+================================================== */
 
-    .show {
+if (menuToggle && dotMenu) {
 
-        opacity: 1 !important;
+    menuToggle.addEventListener(
+        "click",
+        function(event) {
 
-        transform: translateY(0) !important;
+            event.stopPropagation();
+
+            dotMenu.classList.toggle(
+                "active"
+            );
+
+        }
+    );
+
+}
+
+
+
+/* ==================================================
+   MENU LINKS
+================================================== */
+
+menuLinks.forEach((link) => {
+
+    link.addEventListener(
+        "click",
+        function(event) {
+
+            event.preventDefault();
+
+            const target =
+                this.getAttribute("href");
+
+
+            /* HOME */
+
+            if (target === "#home") {
+
+                showPage(
+                    "#home",
+                    false
+                );
+
+                return;
+
+            }
+
+
+            /* OTHER PAGES */
+
+            showPage(
+                target,
+                true
+            );
+
+        }
+    );
+
+});
+
+
+
+/* ==================================================
+   CLOSE MENU OUTSIDE
+================================================== */
+
+document.addEventListener(
+    "click",
+    function(event) {
+
+        if (
+            dotMenu &&
+            menuToggle &&
+            !dotMenu.contains(event.target) &&
+            !menuToggle.contains(event.target)
+        ) {
+
+            dotMenu.classList.remove(
+                "active"
+            );
+
+        }
 
     }
-
-`;
-
-document.head.appendChild(style);
-
-
-/* =========================
-   CHECKLIST
-========================= */
-
-const checkboxes = document.querySelectorAll(
-    '.checklist input[type="checkbox"]'
 );
+
+
+
+/* ==================================================
+   BACK HOME
+================================================== */
+
+const backHome =
+    document.querySelector(".back-home");
+
+
+if (backHome) {
+
+    backHome.addEventListener(
+        "click",
+        function(event) {
+
+            event.preventDefault();
+
+            showPage(
+                "#home",
+                false
+            );
+
+        }
+    );
+
+}
+
+
+
+/* ==================================================
+   INITIAL PAGE
+================================================== */
+
+window.addEventListener(
+    "load",
+    function() {
+
+        /*
+            ALWAYS START AT HOME.
+            3 DOTS ARE HIDDEN.
+        */
+
+        showPage(
+            "#home",
+            false
+        );
+
+    }
+);
+
+
+
+/* ==================================================
+   CHECKLIST
+================================================== */
+
+const checkboxes =
+    document.querySelectorAll(
+        '.checklist input[type="checkbox"]'
+    );
 
 
 const progressText =
@@ -78,10 +273,18 @@ const progressText =
 
 
 const progressFill =
-    document.getElementById("progress-fill");
+    document.getElementById(
+        "progress-fill"
+    );
 
 
 function updateProgress() {
+
+    if (
+        !progressText ||
+        !progressFill
+    ) return;
+
 
     const completed =
         document.querySelectorAll(
@@ -94,7 +297,9 @@ function updateProgress() {
 
 
     const percentage =
-        (completed / total) * 100;
+        total > 0
+        ? (completed / total) * 100
+        : 0;
 
 
     progressText.textContent =
@@ -117,12 +322,15 @@ checkboxes.forEach((checkbox) => {
 });
 
 
-/* =========================
+
+/* ==================================================
    COUNTER
-========================= */
+================================================== */
 
 const counters =
-    document.querySelectorAll(".counter");
+    document.querySelectorAll(
+        ".counter"
+    );
 
 
 let counterStarted = false;
@@ -139,12 +347,13 @@ function startCounters() {
 
         const target =
             parseFloat(
-                counter.getAttribute("data-target")
+                counter.getAttribute(
+                    "data-target"
+                )
             );
 
 
         let current = 0;
-
 
         const increment =
             target / 50;
@@ -181,116 +390,75 @@ function startCounters() {
 }
 
 
-const dataSection =
-    document.querySelector(".data-section");
+
+/* ==================================================
+   START COUNTER WHEN DATA PAGE OPENS
+================================================== */
+
+const originalShowPage =
+    showPage;
 
 
-const counterObserver =
-    new IntersectionObserver(
+window.showPage =
+    function(id, showNavigation = true) {
 
-        (entries) => {
-
-            if (entries[0].isIntersecting) {
-
-                startCounters();
-
-            }
-
-        },
-
-        {
-            threshold: 0.3
-        }
-
-    );
+        originalShowPage(
+            id,
+            showNavigation
+        );
 
 
-counterObserver.observe(dataSection);
+        if (id === "#data") {
 
-
-/* =========================
-   NAVBAR
-========================= */
-
-const navbar =
-    document.querySelector("nav");
-
-
-window.addEventListener(
-    "scroll",
-    () => {
-
-        if (window.scrollY > 50) {
-
-            navbar.style.background =
-                "rgba(5, 8, 6, 0.95)";
-
-        } else {
-
-            navbar.style.background =
-                "rgba(5, 8, 6, 0.7)";
+            startCounters();
 
         }
 
-    }
-);
+    };
 
 
-/* =========================
-   HERO PARALLAX
-========================= */
 
-const hero =
-    document.querySelector(".hero");
-
-
-window.addEventListener(
-    "scroll",
-    () => {
-
-        const scrollPosition =
-            window.scrollY;
-
-
-        if (
-            scrollPosition <
-            window.innerHeight
-        ) {
-
-            hero.style.backgroundPosition =
-                `center ${scrollPosition * 0.35}px`;
-
-        }
-
-    }
-);
-
-/* ========================================
+/* ==================================================
    OUR TEAM SLIDER
-======================================== */
+================================================== */
 
 let currentTeam = 0;
 
+
 const teamCards =
-    document.querySelectorAll(".team-card");
+    document.querySelectorAll(
+        ".team-card"
+    );
+
 
 const teamDots =
-    document.querySelectorAll(".team-dot");
+    document.querySelectorAll(
+        ".team-dot"
+    );
+
 
 
 function showTeam(index) {
 
-    /* LOOP SLIDER */
+    if (
+        !teamCards.length
+    ) return;
 
-    if (index >= teamCards.length) {
+
+    if (
+        index >= teamCards.length
+    ) {
 
         currentTeam = 0;
 
     }
 
-    else if (index < 0) {
+    else if (
+        index < 0
+    ) {
 
-        currentTeam = teamCards.length - 1;
+        currentTeam =
+            teamCards.length - 1;
 
     }
 
@@ -301,30 +469,31 @@ function showTeam(index) {
     }
 
 
-    /* CHANGE TEAM */
+    teamCards.forEach(
+        (card, i) => {
 
-    teamCards.forEach((card, i) => {
+            card.classList.toggle(
+                "active",
+                i === currentTeam
+            );
 
-        card.classList.toggle(
-            "active",
-            i === currentTeam
-        );
-
-    });
+        }
+    );
 
 
-    /* CHANGE DOT */
+    teamDots.forEach(
+        (dot, i) => {
 
-    teamDots.forEach((dot, i) => {
+            dot.classList.toggle(
+                "active-dot",
+                i === currentTeam
+            );
 
-        dot.classList.toggle(
-            "active-dot",
-            i === currentTeam
-        );
-
-    });
+        }
+    );
 
 }
+
 
 
 function changeTeam(direction) {
@@ -335,183 +504,14 @@ function changeTeam(direction) {
 
 }
 
+
+
 /* ==================================================
-   3 DOT PAGE NAVIGATION
+   MAKE TEAM FUNCTIONS GLOBAL
 ================================================== */
 
-const menuToggle =
-    document.getElementById("menuToggle");
-
-const dotMenu =
-    document.getElementById("dotMenu");
-
-const menuLinks =
-    document.querySelectorAll(".dot-menu a");
-
-
-/* ALL MAIN PAGES */
-
-const pages = document.querySelectorAll(
-    "body > section"
-);
-
-
-/* =========================
-   SHOW PAGE
-========================= */
-
-function showPage(id) {
-
-    pages.forEach((page) => {
-
-        page.classList.remove("page-active");
-
-    });
-
-
-    const target =
-        document.querySelector(id);
-
-    if (target) {
-
-        target.classList.add("page-active");
-
-    }
-
-
-    /* CLOSE MENU */
-
-    dotMenu.classList.remove("active");
-
-}
-
-
-/* =========================
-   MENU OPEN / CLOSE
-========================= */
-
-menuToggle.addEventListener(
-    "click",
-    function (event) {
-
-        event.stopPropagation();
-
-        dotMenu.classList.toggle("active");
-
-    }
-);
-
-
-/* =========================
-   MENU LINKS
-========================= */
-
-menuLinks.forEach((link) => {
-
-    link.addEventListener(
-        "click",
-        function (event) {
-
-            event.preventDefault();
-
-            const target =
-                this.getAttribute("href");
-
-            showPage(target);
-
-            history.replaceState(
-                null,
-                "",
-                target
-            );
-
-        }
-    );
-
-});
-
-
-/* =========================
-   CLOSE WHEN CLICK OUTSIDE
-========================= */
-
-document.addEventListener(
-    "click",
-    function (event) {
-
-        if (
-            !dotMenu.contains(event.target) &&
-            !menuToggle.contains(event.target)
-        ) {
-
-            dotMenu.classList.remove("active");
-
-        }
-
-    }
-);
-
-
-/* =========================
-   FIRST PAGE
-========================= */
-
-function loadInitialPage() {
-
-    const hash =
-        window.location.hash;
-
-    if (
-        hash &&
-        document.querySelector(hash)
-    ) {
-
-        showPage(hash);
-
-    }
-
-    else {
-
-        showPage("#home");
-
-    }
-
-}
-
-
-loadInitialPage();
-
-/* ========================================
-   3 DOT MENU
-======================================== */
-
-const menuToggle = document.getElementById("menuToggle");
-const dotMenu = document.getElementById("dotMenu");
-
-if (menuToggle && dotMenu) {
-
-    menuToggle.addEventListener("click", function () {
-
-        dotMenu.classList.toggle("active");
-
-    });
-
-}
-
-
-/* CLOSE MENU WHEN CLICK OUTSIDE */
-
-document.addEventListener("click", function (event) {
-
-    if (
-        dotMenu &&
-        menuToggle &&
-        !dotMenu.contains(event.target) &&
-        !menuToggle.contains(event.target)
-    ) {
-
-        dotMenu.classList.remove("active");
-
-    }
-
-});
+window.showTeam =
+    showTeam;
+
+window.changeTeam =
+    changeTeam;
