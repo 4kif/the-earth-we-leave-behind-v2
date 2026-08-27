@@ -1,138 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>The Earth We Leave Behind</title>
 
     <link rel="stylesheet" href="style.css">
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
-          rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
-
 
 <body>
 
-
-<!-- ==================================================
+<!-- =========================
      NAVIGATION
-     HIDDEN ON HOME PAGE
-================================================== -->
+========================= -->
 
-<nav id="mainNav">
+<nav>
 
-    <a href="https://www.upnm.edu.my/"
-       target="_blank"
-       class="logo-link">
+    <a href="https://www.upnm.edu.my/" target="_blank" class="logo-link">
+    <div class="logo">
+        <img src="logo.png" alt="Earth Logo" class="logo-image">
+        <span>EARTH<span class="green">.</span></span>
+    </div>
+</a>
 
-        <div class="logo">
+    <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#climate">Climate</a>
+        <a href="#causes">Causes</a>
+        <a href="#effects">Effects</a>
+        <a href="climate-data.html">Climate Data</a>
+        <a href="#sustainability">Sustainability</a>
+        <a href="#solutions">Solutions</a>
+    </div>
 
-            <img src="logo.png"
-                 alt="Earth Logo"
-                 class="logo-image">
-
-            <span>
-                EARTH<span class="green">.</span>
-            </span>
-
-        </div>
-
-    </a>
-
-
-    <!-- 3 DOT BUTTON -->
-
-    <button
-        class="menu-toggle"
-        id="menuToggle"
-        type="button"
-        aria-label="Open menu">
-
-        <span></span>
-        <span></span>
-        <span></span>
-
-    </button>
+    <a href="#action" class="nav-button">Take Action</a>
 
 </nav>
 
 
-<!-- ==================================================
-     3 DOT MENU
-================================================== -->
+<!-- =========================
+     HERO
+========================= -->
 
-<div class="dot-menu" id="dotMenu">
-
-    <div class="menu-title">
-        EXPLORE
-    </div>
-
-
-    <a href="#home">
-        01 — HOME
-    </a>
-
-
-    <a href="#climate">
-        02 — CLIMATE
-    </a>
-
-
-    <a href="#causes">
-        03 — CAUSES
-    </a>
-
-
-    <a href="#effects">
-        04 — EFFECTS
-    </a>
-
-
-    <a href="#sustainability">
-        05 — SUSTAINABILITY
-    </a>
-
-
-    <a href="#data">
-        06 — CLIMATE DATA
-    </a>
-
-
-    <a href="#solutions">
-        07 — SOLUTIONS
-    </a>
-
-
-    <a href="#action">
-        08 — TAKE ACTION
-    </a>
-
-
-    <a href="#our-team">
-        09 — OUR TEAM
-    </a>
-
-
-    <a href="#final">
-        10 — FINAL
-    </a>
-
-</div>
-
-
-
-<!-- ==================================================
-     HOME
-================================================== -->
-
-<section id="home" class="hero page-active">
+<section id="home" class="hero">
 
     <div class="hero-content">
 
@@ -140,369 +53,337 @@
             THE FUTURE OF OUR PLANET
         </p>
 
-
         <h1>
             THE EARTH<br>
             <span>WE LEAVE BEHIND</span>
         </h1>
 
-
         <p class="hero-description">
-
             Climate change is not a distant problem.
             It is happening now — and the choices we make
             today will shape the world we leave behind.
             The future isn't somewhere we are going.
             It's something we are creating.
-
         </p>
-
 
         <div class="hero-buttons">
 
-
-            <!-- THIS OPENS NEXT PAGE -->
-
-            <a href="#climate"
-               class="primary-button explore-button">
-
-                EXPLORE THE WEBSITE ↓
-
+            <a href="#climate" class="primary-button">
+                EXPLORE THE PROBLEM ↓
             </a>
 
-
-            <a href="#sustainability"
-               class="secondary-button explore-button">
-
+            <a href="#sustainability" class="secondary-button">
                 EXPLORE SUSTAINABILITY
-
             </a>
 
         </div>
 
+       <div class="hero-visitor">
+    <span class="visitor-dot"></span>
 
-        <div class="hero-visitor">
+    <span>
+        <strong>
+            <img
+                src="https://hits.sh/4kif.github.io/the-earth-we-leave-behind-.svg?style=flat-square&label=VISITORS&color=7ddc8a"
+                alt="Website visitors"
+            >
+        </strong>
+    </span>
+</div>
 
-            <span class="visitor-dot"></span>
-
-            <span>
-
-                <strong>
-
-                    <img
-                        src="https://hits.sh/4kif.github.io/the-earth-we-leave-behind-.svg?style=flat-square&label=VISITORS&color=7ddc8a"
-                        alt="Website visitors">
-
-                </strong>
-
-            </span>
-
-        </div>
-
-
-        <div class="scroll-text">
-
-            EXPLORE TO CONTINUE ↓
-
-        </div>
-
+    <div class="scroll-text">
+        SCROLL TO EXPLORE ↓
     </div>
 
 </section>
 
 
+<!-- =========================
+     CLIMATE CHANGE
+========================= -->
 
-<!-- ==================================================
-     CLIMATE
-================================================== -->
-
-<section id="climate" class="section page">
+  <section id="climate" class="section">
 
     <div class="section-heading">
 
-        <p class="label">
-            01 — UNDERSTANDING THE PROBLEM
-        </p>
+      <p class="label">
+        01 — UNDERSTANDING THE PROBLEM
+      </p>
 
+      <h2>
+        OUR PLANET<br>
+        <span>IS CHANGING.</span>
+      </h2>
 
-        <h2>
-            OUR PLANET<br>
-            <span>IS CHANGING.</span>
-        </h2>
-
-
-        <p>
-
-            Climate change refers to long-term changes in Earth's
-            temperature, weather patterns and natural systems.
-            Human activities have accelerated these changes.
-
-        </p>
+      <p>
+        Climate change refers to long-term changes in Earth's
+        temperature, weather patterns and natural systems.
+        Human activities have accelerated these changes.
+      </p>
 
     </div>
-
 
     <div class="cards">
 
+      <!-- Kad 1: Rising Temperatures -->
+      <div class="info-card">
+        <h3>RISING TEMPERATURES</h3>
+        <img
+          src="images/rising-temps.jpg"
+          alt="Ilustrasi peningkatan suhu global"
+          class="card-image"
+        >
+        <p>
+          Earth's average temperature is increasing,
+          affecting ecosystems, communities and natural systems.
+        </p>
+      </div>
 
-        <div class="info-card">
+      <!-- Kad 2: Rising Sea Levels -->
+      <div class="info-card">
+        <h3>RISING SEA LEVELS</h3>
+        <img
+          src="images/sea-levels.jpg"
+          alt="Ilustrasi kenaikan aras laut"
+          class="card-image"
+        >
+        <p>
+          Melting ice and warming oceans contribute
+          to rising sea levels around the world.
+        </p>
+      </div>
 
-            <div class="card-icon">
-                🌡️
-            </div>
+      <!-- Kad 3: Extreme Weather -->
+      <div class="info-card">
+        <h3>EXTREME WEATHER</h3>
+        <img
+          src="images/extreme-weather.jpg"
+          alt="Ilustrasi cuaca ekstrem seperti ribut dan banjir"
+          class="card-image"
+        >
+        <p>
+          Climate change can increase risks from
+          heatwaves, floods, droughts and intense storms.
+        </p>
+      </div>
 
-            <h3>
-                RISING TEMPERATURES
-            </h3>
-
-            <p>
-
-                Earth's average temperature is increasing,
-                affecting ecosystems, communities and natural systems.
-
-            </p>
-
-        </div>
-
-
-        <div class="info-card">
-
-            <div class="card-icon">
-                🌊
-            </div>
-
-            <h3>
-                RISING SEA LEVELS
-            </h3>
-
-            <p>
-
-                Melting ice and warming oceans contribute
-                to rising sea levels around the world.
-
-            </p>
-
-        </div>
-
-
-        <div class="info-card">
-
-            <div class="card-icon">
-                🔥
-            </div>
-
-            <h3>
-                EXTREME WEATHER
-            </h3>
-
-            <p>
-
-                Climate change can increase risks from
-                heatwaves, floods, droughts and intense storms.
-
-            </p>
-
-        </div>
-
-
-        <div class="info-card">
-
-            <div class="card-icon">
-                🌳
-            </div>
-
-            <h3>
-                LOSS OF NATURE
-            </h3>
-
-            <p>
-
-                Changes in climate can disrupt habitats,
-                ecosystems and biodiversity.
-
-            </p>
-
-        </div>
+      <!-- Kad 4: Loss of Nature -->
+      <div class="info-card">
+        <h3>LOSS OF NATURE</h3>
+        <img
+          src="images/loss-of-nature.jpg"
+          alt="Ilustrasi kehilangan biodiversiti dan habitat"
+          class="card-image"
+        >
+        <p>
+          Changes in climate can disrupt habitats,
+          ecosystems and biodiversity.
+        </p>
+      </div>
 
     </div>
 
-</section>
+  </section>
 
 
-
-<!-- ==================================================
+<!-- =========================
      CAUSES
-================================================== -->
-
-<section id="causes" class="dark-section page">
+========================= -->
 
     <div class="section-heading center">
 
-        <p class="label">
-            02 — THE CAUSES
-        </p>
+      <p class="label">
+        02 — THE CAUSES
+      </p>
 
+      <h2>
+        WE ARE PART<br>
+        OF THE <span>PROBLEM.</span>
+      </h2>
 
-        <h2>
-            WE ARE PART<br>
-            OF THE <span>PROBLEM.</span>
-        </h2>
-
-
-        <p>
-
-            Modern society depends heavily on activities that
-            release greenhouse gases into the atmosphere.
-
-        </p>
+      <p>
+        Modern society depends heavily on activities that
+        release greenhouse gases into the atmosphere.
+      </p>
 
     </div>
 
+    <!-- Slider container -->
+    <div class="causes-slider">
 
-    <div class="cause-grid">
+      <!-- Button kiri -->
+      <button type="button" class="slider-btn prev" aria-label="Previous">
+    &#10094;
+</button>
 
+      <!-- Slides wrapper -->
+      <div class="slides-wrapper">
+        <div class="slides">
 
-        <div class="cause">
+          <!-- 01 Industry -->
+          <div class="slide">
+            <div class="slide-content">
+              <div class="slide-left">
+                <span class="cause-number">01</span>
+                <h3>INDUSTRY</h3>
+                <img
+                  src="images/cause-industry.jpg"
+                  alt="Kilang dan aktiviti perindustrian"
+                  class="cause-image"
+                >
+              </div>
+              <div class="slide-right">
+                <p>
+                  Industrial activities consume energy and
+                  produce greenhouse gas emissions.
+                  For example, air pollution from factories
+                  causes gas release such as carbon dioxide, methane,
+                  and nitrous oxide.
+                </p>
+              </div>
+            </div>
+          </div>
 
-            <span>01</span>
+          <!-- 02 Transport -->
+          <div class="slide">
+            <div class="slide-content">
+              <div class="slide-left">
+                <span class="cause-number">02</span>
+                <h3>TRANSPORT</h3>
+                <img
+                  src="images/cause-transport.jpg"
+                  alt="Kenderaan dan pengangkutan"
+                  class="cause-image"
+                >
+              </div>
+              <div class="slide-right">
+                <p>
+                  Cars, trucks, ships and aircraft contribute
+                  to emissions through fossil fuel use.
+                  For example, cars and motorcycles burn lots of petrol
+                  and release carbon dioxide (CO₂) to the atmosphere.
+                </p>
+              </div>
+            </div>
+          </div>
 
-            <h3>
-                🏭 INDUSTRY
-            </h3>
+          <!-- 03 Deforestation -->
+          <div class="slide">
+            <div class="slide-content">
+              <div class="slide-left">
+                <span class="cause-number">03</span>
+                <h3>DEFORESTATION</h3>
+                <img
+                  src="images/cause-deforestation.jpg"
+                  alt="Penebangan hutan dan kehilangan pokok"
+                  class="cause-image"
+                >
+              </div>
+              <div class="slide-right">
+                <p>
+                  Destroying forests reduces the planet's
+                  ability to naturally absorb carbon dioxide.
+                  For example, trees absorb carbon dioxide (CO₂) from
+                  the atmosphere. When forests are destroyed, less CO₂ is removed.
+                </p>
+              </div>
+            </div>
+          </div>
 
-            <p>
+          <!-- 04 Energy -->
+          <div class="slide">
+            <div class="slide-content">
+              <div class="slide-left">
+                <span class="cause-number">04</span>
+                <h3>ENERGY</h3>
+                <img
+                  src="images/cause-energy.jpg"
+                  alt="Penjanaan tenaga dan pembakaran bahan api fosil"
+                  class="cause-image"
+                >
+              </div>
+              <div class="slide-right">
+                <p>
+                  Burning coal, oil and natural gas releases
+                  large amounts of greenhouse gases. For example,
+                  increased demand for electricity in homes, factories,
+                  and businesses leads to more fossil fuels being burned.
+                </p>
+              </div>
+            </div>
+          </div>
 
-                Industrial activities consume energy and
-                produce greenhouse gas emissions.
-                For example, air pollution from factories
-                causes gas release such as carbon dioxide,
-                methane, and nitrous oxide.
+          <!-- 05 Agriculture -->
+          <div class="slide">
+            <div class="slide-content">
+              <div class="slide-left">
+                <span class="cause-number">05</span>
+                <h3>AGRICULTURE</h3>
+                <img
+                  src="images/cause-agriculture.jpg"
+                  alt="Pertanian dan ternakan"
+                  class="cause-image"
+                >
+              </div>
+              <div class="slide-right">
+                <p>
+                  Agriculture and livestock can contribute
+                  methane and other greenhouse gas emissions.
+                  For example, livestock farming. Animals such as
+                  cows and sheep produce methane (CH₄) during digestion.
+                  Methane is a powerful greenhouse gas.
+                </p>
+              </div>
+            </div>
+          </div>
 
-            </p>
+          <!-- 06 Waste -->
+          <div class="slide">
+            <div class="slide-content">
+              <div class="slide-left">
+                <span class="cause-number">06</span>
+                <h3>WASTE</h3>
+                <img
+                  src="images/cause-waste.jpg"
+                  alt="Sisa dan pengurusan sisa"
+                  class="cause-image"
+                >
+              </div>
+              <div class="slide-right">
+                <p>
+                  Poor waste management contributes to pollution
+                  and greenhouse gas emissions. For example,
+                  large amounts of unmanaged waste can increase
+                  pollution and greenhouse gas emissions.
+                </p>
+              </div>
+            </div>
+          </div>
 
         </div>
+      </div>
 
-
-        <div class="cause">
-
-            <span>02</span>
-
-            <h3>
-                🚗 TRANSPORT
-            </h3>
-
-            <p>
-
-                Cars, trucks, ships and aircraft contribute
-                to emissions through fossil fuel use.
-                For example, cars and motorcycles burn lots
-                of petrol and releases carbon dioxide(CO2)
-                to the atmosphera.
-
-            </p>
-
-        </div>
-
-
-        <div class="cause">
-
-            <span>03</span>
-
-            <h3>
-                🌳 DEFORESTATION
-            </h3>
-
-            <p>
-
-                Destroying forests reduces the planet's
-                ability to naturally absorb carbon dioxide.
-                For example, trees absorb carbon dioxide(CO2)
-                from the atmosphera.
-
-            </p>
-
-        </div>
-
-
-        <div class="cause">
-
-            <span>04</span>
-
-            <h3>
-                ⚡ ENERGY
-            </h3>
-
-            <p>
-
-                Burning coal, oil and natural gas releases
-                large amounts of greenhouse gases.
-                For example, increases demand for electricity
-                in homes, factories, and businesses leads to
-                more fossil fuels being burned.
-
-            </p>
-
-        </div>
-
-
-        <div class="cause">
-
-            <span>05</span>
-
-            <h3>
-                🌾 AGRICULTURE
-            </h3>
-
-            <p>
-
-                Agriculture and livestock can contribute
-                methane and other greenhouse gas emissions.
-                For example, livestock farming.
-                Animal such as cows and sheep produce
-                methane(CH4) during digestion.
-
-            </p>
-
-        </div>
-
-
-        <div class="cause">
-
-            <span>06</span>
-
-            <h3>
-                🗑️ WASTE
-            </h3>
-
-            <p>
-
-                Poor waste management contributes to pollution
-                and greenhouse gas emissions.
-                Large amounts of unmanaged waste can increase
-                pollution and greenhouse gas emissions.
-
-            </p>
-
-        </div>
+      <!-- Button kanan -->
+      <button type="button" class="slider-btn next" aria-label="Next">
+    &#10095;
+</button>
 
     </div>
 
-</section>
+  </section>
 
 
-
-<!-- ==================================================
+<!-- =========================
      EFFECTS
-================================================== -->
+========================= -->
 
-<section id="effects" class="section page">
+<section id="effects" class="section">
 
     <div class="section-heading">
 
         <p class="label">
             03 — THE CONSEQUENCES
         </p>
-
 
         <h2>
             A WORLD<br>
@@ -514,7 +395,6 @@
 
     <div class="impact-list">
 
-
         <div class="impact-item">
 
             <div class="impact-number">
@@ -523,16 +403,12 @@
 
             <div>
 
-                <h3>
-                    OCEANS
-                </h3>
+                <h3>OCEANS</h3>
 
                 <p>
-
                     Warming oceans and rising sea levels
                     put marine ecosystems and coastal communities
                     under increasing pressure.
-
                 </p>
 
             </div>
@@ -552,15 +428,11 @@
 
             <div>
 
-                <h3>
-                    BIODIVERSITY
-                </h3>
+                <h3>BIODIVERSITY</h3>
 
                 <p>
-
                     Plants and animals may struggle to adapt
                     as habitats and environmental conditions change.
-
                 </p>
 
             </div>
@@ -580,15 +452,11 @@
 
             <div>
 
-                <h3>
-                    FOOD & WATER
-                </h3>
+                <h3>FOOD & WATER</h3>
 
                 <p>
-
                     Climate-related changes can affect
                     agriculture, water availability and food security.
-
                 </p>
 
             </div>
@@ -608,15 +476,11 @@
 
             <div>
 
-                <h3>
-                    HUMAN COMMUNITIES
-                </h3>
+                <h3>HUMAN COMMUNITIES</h3>
 
                 <p>
-
                     Communities can face greater risks from
                     extreme heat, flooding and other climate hazards.
-
                 </p>
 
             </div>
@@ -632,13 +496,11 @@
 </section>
 
 
-
 <!-- ==================================================
-     SUSTAINABILITY
+     ENVIRONMENTAL SUSTAINABILITY
 ================================================== -->
 
-<section id="sustainability"
-         class="sustainability-section page">
+<section id="sustainability" class="sustainability-section">
 
     <div class="sustainability-heading">
 
@@ -646,22 +508,16 @@
             04 — ENVIRONMENTAL SUSTAINABILITY
         </p>
 
-
         <h2>
-
             PROTECTING<br>
             <span>WHAT REMAINS.</span>
-
         </h2>
 
-
         <p>
-
             Environmental sustainability means protecting our
             natural environment and using Earth's resources
             responsibly so future generations can continue
             to depend on them.
-
         </p>
 
     </div>
@@ -669,6 +525,8 @@
 
     <div class="sustainability-grid">
 
+
+        <!-- FOREST -->
 
         <div class="sustainability-card">
 
@@ -685,11 +543,9 @@
             </h3>
 
             <p>
-
                 Forests absorb carbon dioxide, provide habitats
                 for wildlife and support millions of people
                 around the world.
-
             </p>
 
             <div class="sustainability-line"></div>
@@ -700,6 +556,8 @@
 
         </div>
 
+
+        <!-- WATER -->
 
         <div class="sustainability-card">
 
@@ -716,11 +574,8 @@
             </h3>
 
             <p>
-
-                Freshwater is essential for life.
-                Reducing water waste helps protect
-                this limited natural resource.
-
+                Freshwater is essential for life. Reducing water
+                waste helps protect this limited natural resource.
             </p>
 
             <div class="sustainability-line"></div>
@@ -731,6 +586,8 @@
 
         </div>
 
+
+        <!-- WASTE -->
 
         <div class="sustainability-card">
 
@@ -747,10 +604,8 @@
             </h3>
 
             <p>
-
-                Reducing, reusing and recycling materials
-                can reduce pollution and decrease waste.
-
+                Reducing, reusing and recycling materials can
+                reduce pollution and decrease waste.
             </p>
 
             <div class="sustainability-line"></div>
@@ -761,6 +616,8 @@
 
         </div>
 
+
+        <!-- ENERGY -->
 
         <div class="sustainability-card">
 
@@ -777,10 +634,8 @@
             </h3>
 
             <p>
-
                 Solar, wind and other renewable energy sources
                 can help reduce dependence on fossil fuels.
-
             </p>
 
             <div class="sustainability-line"></div>
@@ -791,6 +646,8 @@
 
         </div>
 
+
+        <!-- BIODIVERSITY -->
 
         <div class="sustainability-card">
 
@@ -807,10 +664,8 @@
             </h3>
 
             <p>
-
-                Protecting plants, animals and ecosystems
-                helps maintain the balance of nature.
-
+                Protecting plants, animals and ecosystems helps
+                maintain the balance of nature.
             </p>
 
             <div class="sustainability-line"></div>
@@ -821,6 +676,8 @@
 
         </div>
 
+
+        <!-- CITIES -->
 
         <div class="sustainability-card">
 
@@ -837,10 +694,8 @@
             </h3>
 
             <p>
-
                 Sustainable cities use cleaner transport,
                 greener buildings and resources more efficiently.
-
             </p>
 
             <div class="sustainability-line"></div>
@@ -853,6 +708,8 @@
 
     </div>
 
+
+    <!-- SUSTAINABILITY MESSAGE -->
 
     <div class="sustainability-message">
 
@@ -867,10 +724,8 @@
             </p>
 
             <h3>
-
                 LIVE WITH<br>
                 <span>NATURE, NOT AGAINST IT.</span>
-
             </h3>
 
         </div>
@@ -878,11 +733,9 @@
         <div class="message-description">
 
             <p>
-
                 Sustainability is not about stopping progress.
                 It is about creating progress without destroying
                 the natural systems that support life.
-
             </p>
 
         </div>
@@ -892,13 +745,11 @@
 </section>
 
 
-
-<!-- ==================================================
+<!-- =========================
      DATA
-================================================== -->
+========================= -->
 
-<section id="data"
-         class="data-section page">
+<section class="data-section">
 
     <div class="section-heading center">
 
@@ -906,12 +757,9 @@
             05 — THE NUMBERS
         </p>
 
-
         <h2>
-
             THE NUMBERS<br>
             <span>TELL THE STORY.</span>
-
         </h2>
 
     </div>
@@ -923,22 +771,15 @@
         <div class="stat">
 
             <strong>
-
-                <span class="counter"
-                      data-target="1.5">
-
+                <span class="counter" data-target="1.5">
                     0
-
                 </span>°C
-
             </strong>
 
             <p>
-
                 Approximate warming above the
                 pre-industrial average reached
                 in recent years.
-
             </p>
 
         </div>
@@ -951,11 +792,9 @@
             </strong>
 
             <p>
-
                 Carbon dioxide is one of the major
                 greenhouse gases driving human-caused
                 climate change.
-
             </p>
 
         </div>
@@ -968,10 +807,8 @@
             </strong>
 
             <p>
-
                 Climate action is not only about
                 the future. Decisions made today matter.
-
             </p>
 
         </div>
@@ -981,13 +818,11 @@
 </section>
 
 
-
-<!-- ==================================================
+<!-- =========================
      SOLUTIONS
-================================================== -->
+========================= -->
 
-<section id="solutions"
-         class="section page">
+<section id="solutions" class="section">
 
     <div class="section-heading">
 
@@ -995,20 +830,14 @@
             06 — THE SOLUTIONS
         </p>
 
-
         <h2>
-
             WE CAN STILL<br>
             <span>CHANGE THE STORY.</span>
-
         </h2>
 
-
         <p>
-
             Protecting the planet requires action from individuals,
             communities, businesses and governments.
-
         </p>
 
     </div>
@@ -1028,10 +857,8 @@
             </h3>
 
             <p>
-
                 Support renewable energy and use electricity
                 more efficiently.
-
             </p>
 
         </div>
@@ -1048,10 +875,8 @@
             </h3>
 
             <p>
-
                 Walk, cycle, use public transport or share
                 journeys whenever possible.
-
             </p>
 
         </div>
@@ -1068,10 +893,8 @@
             </h3>
 
             <p>
-
                 Reduce consumption, reuse products and
                 recycle materials responsibly.
-
             </p>
 
         </div>
@@ -1088,10 +911,8 @@
             </h3>
 
             <p>
-
                 Protect forests, biodiversity and natural
                 ecosystems.
-
             </p>
 
         </div>
@@ -1101,13 +922,11 @@
 </section>
 
 
-
-<!-- ==================================================
+<!-- =========================
      ACTION
-================================================== -->
+========================= -->
 
-<section id="action"
-         class="action-section page">
+<section id="action" class="action-section">
 
     <div class="action-content">
 
@@ -1115,20 +934,14 @@
             07 — YOUR ROLE
         </p>
 
-
         <h2>
-
             SMALL ACTIONS.<br>
             <span>BIG IMPACT.</span>
-
         </h2>
 
-
         <p>
-
             Sustainability starts with everyday choices.
             Select the actions you are willing to take.
-
         </p>
 
 
@@ -1136,68 +949,50 @@
 
 
             <label>
-
                 <input type="checkbox">
-
                 <span>
                     Reduce unnecessary electricity use
                 </span>
-
             </label>
 
 
             <label>
-
                 <input type="checkbox">
-
                 <span>
                     Reduce food waste
                 </span>
-
             </label>
 
 
             <label>
-
                 <input type="checkbox">
-
                 <span>
                     Use reusable products
                 </span>
-
             </label>
 
 
             <label>
-
                 <input type="checkbox">
-
                 <span>
                     Use public transportation
                 </span>
-
             </label>
 
 
             <label>
-
                 <input type="checkbox">
-
                 <span>
                     Save water
                 </span>
-
             </label>
 
 
             <label>
-
                 <input type="checkbox">
-
                 <span>
                     Protect trees and nature
                 </span>
-
             </label>
 
 
@@ -1218,7 +1013,6 @@
 
             </div>
 
-
             <div class="progress-bar">
 
                 <div id="progress-fill"></div>
@@ -1230,35 +1024,24 @@
     </div>
 
 </section>
-
-
-
-<!-- ==================================================
+    
+<!-- =========================
      OUR TEAM
-================================================== -->
+========================= -->
 
-<section id="our-team"
-         class="team-section page">
+<section class="team-section" id="our-team">
 
     <div class="team-header">
 
-        <span>
-            THE PEOPLE BEHIND IT
-        </span>
-
+        <span>THE PEOPLE BEHIND IT</span>
 
         <h2>
-
             OUR <span>TEAM</span>
-
         </h2>
 
-
         <p>
-
             Meet the people behind
             The Earth We Leave Behind.
-
         </p>
 
     </div>
@@ -1266,44 +1049,30 @@
 
     <div class="team-slider">
 
+        <!-- LEFT ARROW -->
+        <button type="button" class="team-btn prev" onclick="changeTeam(-1)">
+    &#10094;
+</button>
 
-        <button
-            class="team-btn prev"
-            onclick="changeTeam(-1)">
-
-            &#10094;
-
-        </button>
-
-
+        <!-- TEAM CARDS -->
         <div class="team-track">
 
-
+            <!-- TEAM MEMBER 1 -->
             <div class="team-card active">
 
                 <div class="team-image">
-
-                    <img src="akif.JPG"
-                         alt="Akif">
-
+                    <img src="akif.JPG" alt="Akif">
                 </div>
-
 
                 <div class="team-info">
 
-                    <h3>
-                        AKIF ZAQUAN
-                    </h3>
+                    <h3>AKIF ZAQUAN</h3>
 
-                    <h4>
-                        WEB DEVELOPER
-                    </h4>
+                    <h4>WEB DEVELOPER</h4>
 
                     <p>
-
                         Responsible for developing and
                         building the website experience.
-
                     </p>
 
                 </div>
@@ -1311,32 +1080,22 @@
             </div>
 
 
-
+            <!-- TEAM MEMBER 2 -->
             <div class="team-card">
 
                 <div class="team-image">
-
-                    <img src="faris.JPG"
-                         alt="Faris Danial">
-
+                    <img src="faris.JPG" alt="Faris Danial">
                 </div>
-
 
                 <div class="team-info">
 
-                    <h3>
-                        FARIS DANIAL
-                    </h3>
+                    <h3>FARIS DANIAL</h3>
 
-                    <h4>
-                        DESIGNER
-                    </h4>
+                    <h4>DESIGNER</h4>
 
                     <p>
-
                         Responsible for the visual design,
                         layout and creative direction.
-
                     </p>
 
                 </div>
@@ -1346,17 +1105,15 @@
         </div>
 
 
-        <button
-            class="team-btn next"
-            onclick="changeTeam(1)">
-
-            &#10095;
-
-        </button>
+        <!-- RIGHT ARROW -->
+        <button type="button" class="team-btn next" onclick="changeTeam(1)">
+    &#10095;
+</button>
 
     </div>
 
 
+    <!-- SLIDER DOTS -->
     <div class="team-dots">
 
         <span
@@ -1373,14 +1130,11 @@
 
 </section>
 
-
-
-<!-- ==================================================
+<!-- =========================
      FINAL
-================================================== -->
+========================= -->
 
-<section id="final"
-         class="final-section page">
+<section class="final-section">
 
     <div class="final-content">
 
@@ -1388,21 +1142,14 @@
             THE FUTURE IS NOT WRITTEN YET.
         </p>
 
-
         <h2>
-
             WHAT EARTH<br>
             WILL WE LEAVE<br>
             <span>BEHIND?</span>
-
         </h2>
 
-
-        <a href="#home"
-           class="primary-button back-home">
-
-            BACK TO HOME ↑
-
+        <a href="#home" class="primary-button">
+            BACK TO TOP ↑
         </a>
 
     </div>
@@ -1410,10 +1157,9 @@
 </section>
 
 
-
-<!-- ==================================================
+<!-- =========================
      FOOTER
-================================================== -->
+========================= -->
 
 <footer>
 
@@ -1421,31 +1167,25 @@
         THE EARTH WE LEAVE BEHIND
     </div>
 
-
     <p>
-
         A digital awareness project about climate change
         and environmental sustainability.
-
     </p>
-
 
     <div class="footer-line"></div>
 
-
     <p class="copyright">
-
-        © 2026 THE EARTH WE LEAVE BEHIND
-        - created by UPNM students
-
+        © 2026 THE EARTH WE LEAVE BEHIND -created by upnm students
     </p>
 
 </footer>
 
 
-
 <script src="script.js"></script>
 
-</body>
+    <!-- =========================
+     PAGE VIEWS TRACKER
+========================= -->
 
+</body>
 </html>
