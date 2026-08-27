@@ -1,4 +1,3 @@
-
 * {
     margin: 0;
     padding: 0;
@@ -331,7 +330,6 @@ nav {
 /* =========================
    CLIMATE CARDS
 ========================= */
-
 .cards {
     display: grid;
 
@@ -386,78 +384,248 @@ nav {
 }
 
 
+/* Card image */
+.card-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin: 12px 0;
+  display: block;
+  background: #1a5a4d; /* placeholder hijau gelap */
+}
+
+.info-card p {
+  font-size: 14px;
+  color: #c7d9d0;
+  line-height: 1.5;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .section {
+    padding: 60px 16px;
+  }
+
+  .section-heading h2 {
+    font-size: 28px;
+  }
+
+  .card-image {
+    height: 150px;
+  }
+}
+
+
+
 /* =========================
    CAUSES
 ========================= */
 
-.dark-section {
-    padding: 130px 8%;
-
-    background: #080b09;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.6;
+  color: #e5e7eb;
+  background: #000000; /* hitam */
+} 
+
+/* Dark section (Causes) */
+.dark-section {
+  padding: 80px 20px;
+  background: #000000; /* hitam */
+  color: #e5e7eb;
+  min-height: 100vh;
+}
+
+.dark-section .section-heading {
+  margin-bottom: 40px;
+}
+
+.dark-section .section-heading.center {
+  text-align: center;
+}
+
+.dark-section .label {
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #9dd9c7;
+  margin-bottom: 12px;
+}
 
 .dark-section h2 {
-    color: white;
+  font-size: 36px;
+  line-height: 1.2;
+  margin-bottom: 16px;
+  color: #ffffff;
 }
 
-
-.dark-section .section-heading > p:last-child {
-    color: #9da59d;
+.dark-section h2 span {
+  color: #4ade80;
 }
 
-
-.cause-grid {
-    display: grid;
-
-    grid-template-columns: repeat(3, 1fr);
-
-    gap: 1px;
-
-    background: #2b322c;
-
-    border: 1px solid #2b322c;
+.dark-section .section-heading p {
+  max-width: 700px;
+  margin: 0 auto;
+  color: #c7d9d0;
+  font-size: 16px;
 }
 
-
-.cause {
-    padding: 40px;
-
-    min-height: 260px;
-
-    background: #080b09;
-
-    transition: 0.4s;
+/* Slider container */
+.causes-slider {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 
-
-.cause:hover {
-    background: #101610;
+/* Slides wrapper */
+.slides-wrapper {
+  flex: 1;
+  overflow: hidden;
+  border-radius: 16px;
+  background: #0f362e;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
 }
 
-
-.cause span {
-    color: #8ccf63;
-
-    font-size: 11px;
-
-    letter-spacing: 2px;
+/* Slides */
+.slides {
+  display: flex;
+  transition: transform 0.5s ease;
 }
 
-
-.cause h3 {
-    margin: 45px 0 15px;
-
-    font-family: "Space Grotesk", sans-serif;
+.slide {
+  min-width: 100%;
 }
 
+.slide-content {
+  display: flex;
+  gap: 20px;
+  padding: 24px;
+  align-items: center;
+}
 
-.cause p {
-    color: #909890;
+/* Left side: nombor, tajuk, gambar */
+.slide-left {
+  flex: 0 0 220px; /* lebar tetap untuk gambar */
+  text-align: center;
+}
 
-    font-size: 13px;
+.cause-number {
+  display: inline-block;
+  font-size: 13px;
+  letter-spacing: 1px;
+  color: #4ade80;
+  margin-bottom: 6px;
+}
 
-    line-height: 1.7;
+.slide-left h3 {
+  font-size: 18px;
+  color: #ffffff;
+  margin: 0 0 12px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* Cause image – tinggi, lebar kecil */
+.cause-image {
+  width: 100%;
+  height: 320px; /* tinggi, lebar ikut .slide-left */
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+  background: #1a5a4d;
+}
+
+/* Right side: teks */
+.slide-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.slide-right p {
+  font-size: 14px;
+  color: #c7d9d0;
+  line-height: 1.7;
+  text-align: left;
+}
+
+/* Slider buttons */
+.slider-btn {
+  background: #0f362e;
+  color: #4ade80;
+  border: 2px solid #1a5a4d;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.slider-btn:hover {
+  background: #144a3f;
+  transform: scale(1.05);
+}
+
+.slider-btn:active {
+  transform: scale(0.95);
+}
+
+/* Responsive: mobile jadi atas-bawah */
+@media (max-width: 768px) {
+  .dark-section {
+    padding: 60px 16px;
+  }
+
+  .dark-section h2 {
+    font-size: 28px;
+  }
+
+  .causes-slider {
+    gap: 8px;
+  }
+
+  .slider-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+
+  .slide-content {
+    flex-direction: column;
+    padding: 16px;
+  }
+
+  .slide-left {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+
+  .cause-image {
+    height: 220px;
+  }
+
+  .slide-right {
+    width: 100%;
+  }
+
+  .slide-right p {
+    text-align: left;
+  }
 }
 
 
@@ -1293,7 +1461,6 @@ footer p {
     }
 
     .section,
-    .dark-section,
     .data-section,
     .sustainability-section,
     .action-section {
@@ -2099,800 +2266,4 @@ footer span {
     50% {
         opacity: 0.3;
     }
-}
-
-/* ==================================================
-   3 DOT NAVIGATION
-================================================== */
-
-html {
-    scroll-behavior: auto;
-}
-
-body {
-    overflow: hidden;
-}
-
-
-/* =========================
-   HIDE OLD NAVIGATION
-========================= */
-
-.nav-links,
-.nav-button {
-    display: none;
-}
-
-
-/* =========================
-   MENU BUTTON
-========================= */
-
-.menu-toggle {
-
-    width: 48px;
-    height: 48px;
-
-    border: 1px solid rgba(255,255,255,0.2);
-
-    background: rgba(5,8,6,0.65);
-
-    backdrop-filter: blur(15px);
-
-    border-radius: 50%;
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 4px;
-
-    cursor: pointer;
-
-    transition: 0.3s;
-
-    z-index: 2000;
-}
-
-
-.menu-toggle span {
-
-    width: 4px;
-    height: 4px;
-
-    border-radius: 50%;
-
-    background: white;
-
-    transition: 0.3s;
-}
-
-
-.menu-toggle:hover {
-
-    border-color: #8ccf63;
-
-    transform: scale(1.08);
-}
-
-
-.menu-toggle:hover span {
-
-    background: #8ccf63;
-}
-
-
-/* =========================
-   DOT MENU
-========================= */
-
-.dot-menu {
-
-    position: fixed;
-
-    top: 95px;
-
-    right: 6%;
-
-    width: 260px;
-
-    padding: 25px;
-
-    background: rgba(7,12,8,0.95);
-
-    backdrop-filter: blur(25px);
-
-    border: 1px solid rgba(140,207,99,0.25);
-
-    box-shadow:
-        0 25px 70px rgba(0,0,0,0.45);
-
-    z-index: 1500;
-
-    opacity: 0;
-
-    visibility: hidden;
-
-    transform:
-        translateY(-15px)
-        scale(0.96);
-
-    transform-origin: top right;
-
-    transition:
-        opacity .3s ease,
-        transform .3s ease,
-        visibility .3s;
-}
-
-
-.dot-menu.active {
-
-    opacity: 1;
-
-    visibility: visible;
-
-    transform:
-        translateY(0)
-        scale(1);
-}
-
-
-/* MENU TITLE */
-
-.menu-title {
-
-    color: #8ccf63;
-
-    font-size: 9px;
-
-    letter-spacing: 3px;
-
-    margin-bottom: 18px;
-
-    padding-bottom: 15px;
-
-    border-bottom:
-        1px solid
-        rgba(255,255,255,0.1);
-}
-
-
-/* MENU LINKS */
-
-.dot-menu a {
-
-    display: block;
-
-    padding: 13px 5px;
-
-    color: #c4ccc5;
-
-    font-family:
-        "Space Grotesk",
-        sans-serif;
-
-    font-size: 11px;
-
-    letter-spacing: 1px;
-
-    transition:
-        color .25s ease,
-        padding-left .25s ease;
-}
-
-
-.dot-menu a:hover {
-
-    color: #8ccf63;
-
-    padding-left: 10px;
-}
-
-
-/* ==================================================
-   PAGE SYSTEM
-================================================== */
-
-/*
-   Semua section jadi "page".
-   Hanya section yang aktif akan dipaparkan.
-*/
-
-body > section {
-
-    display: none;
-
-    min-height: 100vh;
-
-    height: 100vh;
-
-    overflow-y: auto;
-
-    overflow-x: hidden;
-}
-
-
-body > section.page-active {
-
-    display: flex;
-
-}
-
-
-/* HERO */
-
-body > section.hero.page-active {
-
-    display: flex;
-
-}
-
-
-/* ==================================================
-   PAGE TRANSITION
-================================================== */
-
-@keyframes pageIn {
-
-    from {
-
-        opacity: 0;
-
-        transform:
-            translateY(20px)
-            scale(.98);
-
-    }
-
-    to {
-
-        opacity: 1;
-
-        transform:
-            translateY(0)
-            scale(1);
-
-    }
-
-}
-
-
-.page-active {
-
-    animation:
-        pageIn .5s ease;
-}
-
-
-/* ==================================================
-   KEEP TEAM PAGE
-================================================== */
-
-.team-section.page-active {
-
-    display: flex;
-}
-
-
-/* ==================================================
-   MOBILE MENU
-================================================== */
-
-@media (max-width: 700px) {
-
-    .menu-toggle {
-
-        width: 43px;
-
-        height: 43px;
-    }
-
-
-    .dot-menu {
-
-        top: 85px;
-
-        right: 5%;
-
-        width: 240px;
-
-        max-height: 75vh;
-
-        overflow-y: auto;
-    }
-
-}
-
-/* ========================================
-   3 DOT MENU - FORCE VISIBLE
-======================================== */
-
-nav {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-
-    width: 100% !important;
-    height: 80px !important;
-
-    display: flex !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-
-    padding: 0 6% !important;
-
-    z-index: 9999 !important;
-}
-
-
-/* 3 DOT BUTTON */
-
-.menu-toggle {
-    display: flex !important;
-
-    width: 48px !important;
-    height: 48px !important;
-
-    flex-direction: column !important;
-    justify-content: center !important;
-    align-items: center !important;
-
-    gap: 5px !important;
-
-    padding: 0 !important;
-
-    background: rgba(5, 8, 6, 0.9) !important;
-
-    border: 1px solid rgba(140, 207, 99, 0.7) !important;
-
-    border-radius: 50% !important;
-
-    cursor: pointer !important;
-
-    position: relative !important;
-
-    z-index: 10000 !important;
-}
-
-
-/* DOTS */
-
-.menu-toggle span {
-    display: block !important;
-
-    width: 5px !important;
-    height: 5px !important;
-
-    min-width: 5px !important;
-    min-height: 5px !important;
-
-    background: #8ccf63 !important;
-
-    border-radius: 50% !important;
-}
-
-
-/* HIDE OLD NAV */
-
-.nav-links,
-.nav-button {
-    display: none !important;
-}
-
-
-/* ========================================
-   DROPDOWN MENU
-======================================== */
-
-.dot-menu {
-
-    position: fixed !important;
-
-    top: 95px !important;
-    right: 6% !important;
-
-    width: 270px !important;
-
-    padding: 25px !important;
-
-    background: rgba(7, 12, 8, 0.97) !important;
-
-    border: 1px solid rgba(140, 207, 99, 0.3) !important;
-
-    backdrop-filter: blur(20px) !important;
-
-    z-index: 9998 !important;
-
-    opacity: 0 !important;
-
-    visibility: hidden !important;
-
-    transform: translateY(-15px) !important;
-
-    transition: all 0.3s ease !important;
-}
-
-
-.dot-menu.active {
-
-    opacity: 1 !important;
-
-    visibility: visible !important;
-
-    transform: translateY(0) !important;
-}
-
-
-.dot-menu a {
-
-    display: block !important;
-
-    padding: 13px 5px !important;
-
-    color: #c5ccc5 !important;
-
-    font-family: "Space Grotesk", sans-serif !important;
-
-    font-size: 11px !important;
-
-    letter-spacing: 1px !important;
-
-    text-decoration: none !important;
-}
-
-
-.dot-menu a:hover {
-
-    color: #8ccf63 !important;
-
-}
-
-
-.menu-title {
-
-    color: #8ccf63 !important;
-
-    font-size: 10px !important;
-
-    letter-spacing: 3px !important;
-
-    margin-bottom: 15px !important;
-
-    padding-bottom: 15px !important;
-
-    border-bottom: 1px solid rgba(255,255,255,0.1) !important;
-}
-
-
-/* MOBILE */
-
-@media (max-width: 700px) {
-
-    nav {
-        padding: 0 5% !important;
-    }
-
-    .menu-toggle {
-        width: 45px !important;
-        height: 45px !important;
-    }
-
-    .dot-menu {
-        right: 5% !important;
-        width: 250px !important;
-    }
-
-}
-
-/* ==================================================
-   3 DOT NAVIGATION
-================================================== */
-
-html {
-    scroll-behavior: auto;
-}
-
-body {
-    overflow: hidden;
-}
-
-
-/* =========================
-   HIDE OLD NAVIGATION
-========================= */
-
-.nav-links,
-.nav-button {
-    display: none;
-}
-
-
-/* =========================
-   MENU BUTTON
-========================= */
-
-.menu-toggle {
-
-    width: 48px;
-    height: 48px;
-
-    border: 1px solid rgba(255,255,255,0.2);
-
-    background: rgba(5,8,6,0.65);
-
-    backdrop-filter: blur(15px);
-
-    border-radius: 50%;
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 4px;
-
-    cursor: pointer;
-
-    transition: 0.3s;
-
-    z-index: 2000;
-}
-
-
-.menu-toggle span {
-
-    width: 4px;
-    height: 4px;
-
-    border-radius: 50%;
-
-    background: white;
-
-    transition: 0.3s;
-}
-
-
-.menu-toggle:hover {
-
-    border-color: #8ccf63;
-
-    transform: scale(1.08);
-}
-
-
-.menu-toggle:hover span {
-
-    background: #8ccf63;
-}
-
-
-/* =========================
-   DOT MENU
-========================= */
-
-.dot-menu {
-
-    position: fixed;
-
-    top: 95px;
-
-    right: 6%;
-
-    width: 260px;
-
-    padding: 25px;
-
-    background: rgba(7,12,8,0.95);
-
-    backdrop-filter: blur(25px);
-
-    border: 1px solid rgba(140,207,99,0.25);
-
-    box-shadow:
-        0 25px 70px rgba(0,0,0,0.45);
-
-    z-index: 1500;
-
-    opacity: 0;
-
-    visibility: hidden;
-
-    transform:
-        translateY(-15px)
-        scale(0.96);
-
-    transform-origin: top right;
-
-    transition:
-        opacity .3s ease,
-        transform .3s ease,
-        visibility .3s;
-}
-
-
-.dot-menu.active {
-
-    opacity: 1;
-
-    visibility: visible;
-
-    transform:
-        translateY(0)
-        scale(1);
-}
-
-
-/* MENU TITLE */
-
-.menu-title {
-
-    color: #8ccf63;
-
-    font-size: 9px;
-
-    letter-spacing: 3px;
-
-    margin-bottom: 18px;
-
-    padding-bottom: 15px;
-
-    border-bottom:
-        1px solid
-        rgba(255,255,255,0.1);
-}
-
-
-/* MENU LINKS */
-
-.dot-menu a {
-
-    display: block;
-
-    padding: 13px 5px;
-
-    color: #c4ccc5;
-
-    font-family:
-        "Space Grotesk",
-        sans-serif;
-
-    font-size: 11px;
-
-    letter-spacing: 1px;
-
-    transition:
-        color .25s ease,
-        padding-left .25s ease;
-}
-
-
-.dot-menu a:hover {
-
-    color: #8ccf63;
-
-    padding-left: 10px;
-}
-
-
-/* ==================================================
-   PAGE SYSTEM
-================================================== */
-
-/*
-   Semua section jadi "page".
-   Hanya section yang aktif akan dipaparkan.
-*/
-
-body > section {
-
-    display: none;
-
-    min-height: 100vh;
-
-    height: 100vh;
-
-    overflow-y: auto;
-
-    overflow-x: hidden;
-}
-
-
-body > section.page-active {
-
-    display: flex;
-
-}
-
-
-/* HERO */
-
-body > section.hero.page-active {
-
-    display: flex;
-
-}
-
-
-/* ==================================================
-   PAGE TRANSITION
-================================================== */
-
-@keyframes pageIn {
-
-    from {
-
-        opacity: 0;
-
-        transform:
-            translateY(20px)
-            scale(.98);
-
-    }
-
-    to {
-
-        opacity: 1;
-
-        transform:
-            translateY(0)
-            scale(1);
-
-    }
-
-}
-
-
-.page-active {
-
-    animation:
-        pageIn .5s ease;
-}
-
-
-/* ==================================================
-   KEEP TEAM PAGE
-================================================== */
-
-.team-section.page-active {
-
-    display: flex;
-}
-
-
-/* ==================================================
-   MOBILE MENU
-================================================== */
-
-@media (max-width: 700px) {
-
-    .menu-toggle {
-
-        width: 43px;
-
-        height: 43px;
-    }
-
-
-    .dot-menu {
-
-        top: 85px;
-
-        right: 5%;
-
-        width: 240px;
-
-        max-height: 75vh;
-
-        overflow-y: auto;
-    }
-
 }
