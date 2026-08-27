@@ -334,3 +334,149 @@ function changeTeam(direction) {
     );
 
 }
+
+/* ==================================================
+   3 DOT PAGE NAVIGATION
+================================================== */
+
+const menuToggle =
+    document.getElementById("menuToggle");
+
+const dotMenu =
+    document.getElementById("dotMenu");
+
+const menuLinks =
+    document.querySelectorAll(".dot-menu a");
+
+
+/* ALL MAIN PAGES */
+
+const pages = document.querySelectorAll(
+    "body > section"
+);
+
+
+/* =========================
+   SHOW PAGE
+========================= */
+
+function showPage(id) {
+
+    pages.forEach((page) => {
+
+        page.classList.remove("page-active");
+
+    });
+
+
+    const target =
+        document.querySelector(id);
+
+    if (target) {
+
+        target.classList.add("page-active");
+
+    }
+
+
+    /* CLOSE MENU */
+
+    dotMenu.classList.remove("active");
+
+}
+
+
+/* =========================
+   MENU OPEN / CLOSE
+========================= */
+
+menuToggle.addEventListener(
+    "click",
+    function (event) {
+
+        event.stopPropagation();
+
+        dotMenu.classList.toggle("active");
+
+    }
+);
+
+
+/* =========================
+   MENU LINKS
+========================= */
+
+menuLinks.forEach((link) => {
+
+    link.addEventListener(
+        "click",
+        function (event) {
+
+            event.preventDefault();
+
+            const target =
+                this.getAttribute("href");
+
+            showPage(target);
+
+            history.replaceState(
+                null,
+                "",
+                target
+            );
+
+        }
+    );
+
+});
+
+
+/* =========================
+   CLOSE WHEN CLICK OUTSIDE
+========================= */
+
+document.addEventListener(
+    "click",
+    function (event) {
+
+        if (
+            !dotMenu.contains(event.target) &&
+            !menuToggle.contains(event.target)
+        ) {
+
+            dotMenu.classList.remove("active");
+
+        }
+
+    }
+);
+
+
+/* =========================
+   FIRST PAGE
+========================= */
+
+function loadInitialPage() {
+
+    const hash =
+        window.location.hash;
+
+    if (
+        hash &&
+        document.querySelector(hash)
+    ) {
+
+        showPage(hash);
+
+    }
+
+    else {
+
+        showPage("#home");
+
+    }
+
+}
+
+
+loadInitialPage();
