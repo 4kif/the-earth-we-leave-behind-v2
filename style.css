@@ -1,0 +1,2102 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    background: #080b09;
+    color: #f1f4ef;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 80px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 6%;
+
+    z-index: 1000;
+
+    background: rgba(5, 8, 6, 0.7);
+
+    backdrop-filter: blur(15px);
+
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+
+    transition: 0.3s;
+}
+
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    font-family: "Space Grotesk", sans-serif;
+
+    font-size: 20px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+}
+
+.logo-image {
+    width: 37px;
+    height: 37px;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+}
+
+
+.green {
+    color: #8ccf63;
+}
+
+
+.nav-links {
+    display: flex;
+
+    gap: 25px;
+}
+
+
+.nav-links a {
+    font-size: 11px;
+
+    color: #c5ccc5;
+
+    transition: 0.3s;
+}
+
+
+.nav-links a:hover {
+    color: #8ccf63;
+}
+
+
+.nav-button {
+    padding: 12px 20px;
+
+    border: 1px solid #8ccf63;
+
+    color: #8ccf63;
+
+    font-size: 11px;
+
+    letter-spacing: 1px;
+
+    transition: 0.3s;
+}
+
+
+.nav-button:hover {
+    background: #8ccf63;
+
+    color: #071006;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+
+    position: relative;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(4,7,5,0.95),
+            rgba(4,7,5,0.65),
+            rgba(4,7,5,0.2)
+        ),
+        url("https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=2400&q=90");
+
+    background-size: cover;
+
+    background-position: center;
+}
+
+
+.hero-content {
+    width: 850px;
+
+    max-width: 90%;
+
+    margin-left: 8%;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+.small-title,
+.label {
+    color: #8ccf63;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 25px;
+}
+
+
+.hero h1 {
+    font-family: "Space Grotesk", sans-serif;
+
+    font-size: clamp(55px, 8vw, 120px);
+
+    line-height: 0.9;
+
+    letter-spacing: -5px;
+
+    margin-bottom: 35px;
+}
+
+
+.hero h1 span {
+    color: #8ccf63;
+}
+
+
+.hero-description {
+    max-width: 600px;
+
+    color: #c1c8c1;
+
+    line-height: 1.8;
+
+    font-size: 16px;
+
+    margin-bottom: 35px;
+}
+
+
+.hero-buttons {
+    display: flex;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
+}
+
+
+.primary-button,
+.secondary-button {
+    display: inline-block;
+
+    padding: 16px 25px;
+
+    font-size: 11px;
+
+    letter-spacing: 1px;
+
+    transition: 0.3s;
+}
+
+
+.primary-button {
+    background: #8ccf63;
+
+    color: #071006;
+}
+
+
+.primary-button:hover {
+    transform: translateY(-3px);
+}
+
+
+.secondary-button {
+    border: 1px solid rgba(255,255,255,0.3);
+
+    color: white;
+}
+
+
+.secondary-button:hover {
+    border-color: #8ccf63;
+
+    color: #8ccf63;
+}
+
+
+.scroll-text {
+    position: absolute;
+
+    right: 6%;
+
+    bottom: 35px;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    color: #9da49d;
+}
+
+
+/* =========================
+   GENERAL SECTION
+========================= */
+
+.section {
+    padding: 130px 8%;
+
+    background: #f1f3ed;
+
+    color: #101410;
+}
+
+
+.section-heading {
+    max-width: 750px;
+
+    margin-bottom: 70px;
+}
+
+
+.section-heading h2,
+.sustainability-heading h2 {
+    font-family: "Space Grotesk", sans-serif;
+
+    font-size: clamp(45px, 6vw, 85px);
+
+    line-height: 0.95;
+
+    letter-spacing: -4px;
+
+    margin-bottom: 30px;
+}
+
+
+.section-heading h2 span {
+    color: #6da54d;
+}
+
+
+.section-heading > p:last-child {
+    max-width: 650px;
+
+    line-height: 1.8;
+
+    color: #596159;
+}
+
+
+.center {
+    text-align: center;
+
+    margin-left: auto;
+
+    margin-right: auto;
+}
+
+
+/* =========================
+   CLIMATE CARDS
+========================= */
+
+.cards {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 18px;
+}
+
+
+.info-card {
+    padding: 35px;
+
+    min-height: 300px;
+
+    border: 1px solid #d9ded8;
+
+    transition: 0.4s;
+}
+
+
+.info-card:hover {
+    transform: translateY(-10px);
+
+    background: #e5ebdf;
+
+    border-color: #8ccf63;
+}
+
+
+.card-icon {
+    font-size: 35px;
+
+    margin-bottom: 60px;
+}
+
+
+.info-card h3 {
+    font-family: "Space Grotesk", sans-serif;
+
+    font-size: 18px;
+
+    margin-bottom: 15px;
+}
+
+
+.info-card p {
+    color: #606860;
+
+    line-height: 1.7;
+
+    font-size: 13px;
+}
+
+
+/* =========================
+   CAUSES
+========================= */
+
+.dark-section {
+    padding: 130px 8%;
+
+    background: #080b09;
+}
+
+
+.dark-section h2 {
+    color: white;
+}
+
+
+.dark-section .section-heading > p:last-child {
+    color: #9da59d;
+}
+
+
+.cause-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 1px;
+
+    background: #2b322c;
+
+    border: 1px solid #2b322c;
+}
+
+
+.cause {
+    padding: 40px;
+
+    min-height: 260px;
+
+    background: #080b09;
+
+    transition: 0.4s;
+}
+
+
+.cause:hover {
+    background: #101610;
+}
+
+
+.cause span {
+    color: #8ccf63;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+}
+
+
+.cause h3 {
+    margin: 45px 0 15px;
+
+    font-family: "Space Grotesk", sans-serif;
+}
+
+
+.cause p {
+    color: #909890;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================
+   EFFECTS
+========================= */
+
+.impact-list {
+    border-top: 1px solid #ccd2cc;
+}
+
+
+.impact-item {
+    display: grid;
+
+    grid-template-columns: 100px 1fr 50px;
+
+    align-items: center;
+
+    gap: 30px;
+
+    padding: 35px 0;
+
+    border-bottom: 1px solid #ccd2cc;
+
+    transition: 0.3s;
+}
+
+
+.impact-item:hover {
+    padding-left: 15px;
+}
+
+
+.impact-number {
+    color: #8aaa80;
+
+    font-size: 12px;
+}
+
+
+.impact-item h3 {
+    font-family: "Space Grotesk", sans-serif;
+
+    margin-bottom: 10px;
+}
+
+
+.impact-item p {
+    max-width: 650px;
+
+    color: #666d66;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+}
+
+
+.impact-arrow {
+    font-size: 25px;
+
+    color: #8ccf63;
+}
+
+
+/* ==================================================
+   ENVIRONMENTAL SUSTAINABILITY
+================================================== */
+
+.sustainability-section {
+
+    padding: 140px 8%;
+
+    background:
+        linear-gradient(
+            rgba(7, 13, 8, 0.92),
+            rgba(7, 13, 8, 0.97)
+        ),
+        url("https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=2400&q=90");
+
+    background-size: cover;
+
+    background-position: center;
+
+    background-attachment: fixed;
+
+    color: #f1f4ef;
+}
+
+
+.sustainability-heading {
+
+    max-width: 850px;
+
+    margin-bottom: 80px;
+}
+
+
+.sustainability-heading h2 {
+
+    color: white;
+
+}
+
+
+.sustainability-heading h2 span {
+
+    color: #8ccf63;
+}
+
+
+.sustainability-heading > p:last-child {
+
+    max-width: 650px;
+
+    color: #9ca69d;
+
+    line-height: 1.8;
+
+    font-size: 15px;
+}
+
+
+/* SUSTAINABILITY GRID */
+
+.sustainability-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 18px;
+}
+
+
+/* SUSTAINABILITY CARD */
+
+.sustainability-card {
+
+    position: relative;
+
+    min-height: 380px;
+
+    padding: 35px;
+
+    background: rgba(14, 21, 15, 0.85);
+
+    border: 1px solid #293329;
+
+    overflow: hidden;
+
+    transition:
+        transform 0.4s ease,
+        border-color 0.4s ease,
+        background 0.4s ease;
+}
+
+
+.sustainability-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+
+    height: 180px;
+
+    background: #8ccf63;
+
+    opacity: 0;
+
+    filter: blur(100px);
+
+    top: -80px;
+
+    right: -80px;
+
+    transition: 0.5s;
+}
+
+
+.sustainability-card:hover::before {
+
+    opacity: 0.15;
+}
+
+
+.sustainability-card:hover {
+
+    transform: translateY(-10px);
+
+    border-color: #8ccf63;
+
+    background: rgba(20, 31, 20, 0.95);
+}
+
+
+.sustainability-icon {
+
+    font-size: 42px;
+
+    margin-bottom: 35px;
+
+    transition: transform 0.4s ease;
+}
+
+
+.sustainability-card:hover .sustainability-icon {
+
+    transform: scale(1.15);
+}
+
+
+.sustainability-number {
+
+    position: absolute;
+
+    top: 35px;
+
+    right: 35px;
+
+    color: #697469;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+}
+
+
+.sustainability-card h3 {
+
+    font-family: "Space Grotesk", sans-serif;
+
+    font-size: 19px;
+
+    margin-bottom: 18px;
+}
+
+
+.sustainability-card p {
+
+    color: #929c93;
+
+    font-size: 13px;
+
+    line-height: 1.8;
+}
+
+
+.sustainability-line {
+
+    width: 40px;
+
+    height: 2px;
+
+    background: #8ccf63;
+
+    margin: 30px 0 18px;
+
+    transition: 0.4s;
+}
+
+
+.sustainability-card:hover .sustainability-line {
+
+    width: 100px;
+}
+
+
+.sustainability-card strong {
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    color: #8ccf63;
+}
+
+
+/* SUSTAINABILITY MESSAGE */
+
+.sustainability-message {
+
+    margin-top: 80px;
+
+    padding: 45px;
+
+    display: grid;
+
+    grid-template-columns: 100px 1fr 1fr;
+
+    align-items: center;
+
+    gap: 40px;
+
+    border-top: 1px solid #303a30;
+
+    border-bottom: 1px solid #303a30;
+}
+
+
+.message-number {
+
+    color: #8ccf63;
+
+    font-size: 12px;
+
+    letter-spacing: 2px;
+}
+
+
+.message-text p {
+
+    color: #8ccf63;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 15px;
+}
+
+
+.message-text h3 {
+
+    font-family: "Space Grotesk", sans-serif;
+
+    font-size: 35px;
+
+    line-height: 1;
+
+    letter-spacing: -2px;
+}
+
+
+.message-text h3 span {
+
+    color: #8ccf63;
+}
+
+
+.message-description p {
+
+    color: #899389;
+
+    font-size: 13px;
+
+    line-height: 1.8;
+
+    max-width: 450px;
+}
+
+
+/* =========================
+   DATA
+========================= */
+
+.data-section {
+
+    padding: 130px 8%;
+
+    background: #121812;
+}
+
+
+.data-section .section-heading {
+
+    color: white;
+}
+
+
+.data-section h2 {
+
+    font-family: "Space Grotesk", sans-serif;
+
+    font-size: clamp(45px, 6vw, 80px);
+
+    line-height: 0.95;
+
+    letter-spacing: -4px;
+}
+
+
+.data-section h2 span {
+
+    color: #8ccf63;
+}
+
+
+.stats {
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+
+.stat {
+
+    padding: 45px;
+
+    border: 1px solid #303930;
+}
+
+
+.stat strong {
+
+    font-family: "Space Grotesk", sans-serif;
+
+    font-size: 70px;
+
+    color: #8ccf63;
+}
+
+
+.stat p {
+
+    color: #929a92;
+
+    line-height: 1.7;
+
+    margin-top: 20px;
+
+    font-size: 13px;
+}
+
+
+/* =========================
+   SOLUTIONS
+========================= */
+
+.solution-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 20px;
+}
+
+
+.solution-card {
+
+    padding: 35px;
+
+    background: #e5e9e1;
+
+    min-height: 260px;
+
+    transition: 0.3s;
+}
+
+
+.solution-card:hover {
+
+    transform: translateY(-8px);
+
+    background: #dce8d6;
+}
+
+
+.solution-card > div {
+
+    font-size: 35px;
+
+    margin-bottom: 50px;
+}
+
+
+.solution-card h3 {
+
+    font-family: "Space Grotesk", sans-serif;
+
+    margin-bottom: 15px;
+}
+
+
+.solution-card p {
+
+    color: #636b63;
+
+    line-height: 1.7;
+
+    font-size: 13px;
+}
+
+
+/* =========================
+   ACTION
+========================= */
+
+.action-section {
+
+    padding: 130px 8%;
+
+    background:
+        linear-gradient(
+            rgba(7,10,8,0.9),
+            rgba(7,10,8,0.95)
+        ),
+        url("https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=2400&q=90");
+
+    background-size: cover;
+
+    background-position: center;
+
+    background-attachment: fixed;
+}
+
+
+.action-content {
+
+    max-width: 800px;
+}
+
+
+.action-section h2 {
+
+    font-family: "Space Grotesk", sans-serif;
+
+    font-size: clamp(45px, 6vw, 80px);
+
+    line-height: 0.95;
+
+    letter-spacing: -4px;
+
+    margin-bottom: 25px;
+}
+
+
+.action-section h2 span {
+
+    color: #8ccf63;
+}
+
+
+.action-section > .action-content > p:not(.label) {
+
+    color: #9da59d;
+
+    line-height: 1.7;
+
+    max-width: 600px;
+}
+
+
+/* CHECKLIST */
+
+.checklist {
+
+    margin-top: 40px;
+
+    display: grid;
+
+    gap: 10px;
+}
+
+
+.checklist label {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 17px 20px;
+
+    border: 1px solid #303730;
+
+    color: #d3d8d3;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+
+.checklist label:hover {
+
+    border-color: #8ccf63;
+}
+
+
+.checklist input {
+
+    width: 18px;
+
+    height: 18px;
+
+    accent-color: #8ccf63;
+}
+
+
+/* PROGRESS */
+
+.progress-box {
+
+    margin-top: 35px;
+}
+
+
+.progress-text {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    color: #a5ada5;
+
+    margin-bottom: 10px;
+}
+
+
+.progress-bar {
+
+    width: 100%;
+
+    height: 6px;
+
+    background: #252c25;
+}
+
+
+#progress-fill {
+
+    height: 100%;
+
+    width: 0%;
+
+    background: #8ccf63;
+
+    transition: 0.4s;
+}
+
+
+/* =========================
+   FINAL
+========================= */
+
+.final-section {
+
+    min-height: 90vh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 100px 20px;
+
+    background:
+        linear-gradient(
+            rgba(4,7,5,0.8),
+            rgba(4,7,5,0.95)
+        ),
+        url("https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?auto=format&fit=crop&w=2400&q=90");
+
+    background-size: cover;
+
+    background-position: center;
+}
+
+
+.final-content > p {
+
+    color: #8ccf63;
+
+    letter-spacing: 4px;
+
+    font-size: 11px;
+
+    margin-bottom: 30px;
+}
+
+
+.final-section h2 {
+
+    font-family: "Space Grotesk", sans-serif;
+
+    font-size: clamp(50px, 8vw, 110px);
+
+    line-height: 0.9;
+
+    letter-spacing: -5px;
+
+    margin-bottom: 45px;
+}
+
+
+.final-section h2 span {
+
+    color: #8ccf63;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+
+    padding: 60px 8%;
+
+    background: #050705;
+
+    color: #879087;
+}
+
+
+.footer-logo {
+
+    font-family: "Space Grotesk", sans-serif;
+
+    color: white;
+
+    font-size: 20px;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 15px;
+}
+
+
+footer p {
+
+    font-size: 12px;
+
+    line-height: 1.7;
+}
+
+
+.footer-line {
+
+    height: 1px;
+
+    background: #252b25;
+
+    margin: 40px 0 20px;
+}
+
+
+.copyright {
+
+    font-size: 10px;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1100px) {
+
+    .nav-links {
+
+        gap: 12px;
+    }
+
+    .nav-links a {
+
+        font-size: 9px;
+    }
+
+    .cards,
+    .solution-grid {
+
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .cause-grid,
+    .sustainability-grid {
+
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stats {
+
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    nav {
+
+        padding: 0 5%;
+    }
+
+    .nav-links {
+
+        display: none;
+    }
+
+    .logo {
+
+        font-size: 17px;
+    }
+
+    .nav-button {
+
+        padding: 10px 13px;
+    }
+
+    .hero-content {
+
+        margin-left: 5%;
+    }
+
+    .hero h1 {
+
+        letter-spacing: -3px;
+    }
+
+    .hero-buttons {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+    .section,
+    .dark-section,
+    .data-section,
+    .sustainability-section,
+    .action-section {
+
+        padding: 90px 6%;
+    }
+
+    .cards,
+    .solution-grid,
+    .cause-grid,
+    .sustainability-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+    .impact-item {
+
+        grid-template-columns: 45px 1fr 25px;
+
+        gap: 15px;
+    }
+
+    .impact-arrow {
+
+        font-size: 18px;
+    }
+
+    .section-heading h2,
+    .sustainability-heading h2,
+    .data-section h2,
+    .action-section h2 {
+
+        letter-spacing: -3px;
+    }
+
+    .sustainability-message {
+
+        grid-template-columns: 1fr;
+
+        gap: 25px;
+
+        padding: 30px 0;
+    }
+
+    .message-text h3 {
+
+        font-size: 30px;
+    }
+
+    .final-section h2 {
+
+        letter-spacing: -3px;
+    }
+
+}
+
+/* ========================================
+   CLIMATE DATA PAGE
+======================================== */
+
+.data-hero {
+
+    min-height: 55vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    padding: 100px 20px 60px;
+
+}
+
+
+.small-title {
+
+    color: #39ff88;
+
+    font-size: 13px;
+
+    letter-spacing: 4px;
+
+    font-weight: 700;
+
+    margin-bottom: 20px;
+
+}
+
+
+.data-hero h1 {
+
+    font-size: clamp(45px, 8vw, 90px);
+
+    line-height: 1;
+
+    margin: 0;
+
+    max-width: 1000px;
+
+}
+
+
+.data-hero > p:last-child {
+
+    margin-top: 25px;
+
+    color: #a8b3bd;
+
+    font-size: 18px;
+
+}
+
+
+/* GRAPH SECTION */
+
+.graph-section {
+
+    width: 90%;
+
+    max-width: 1250px;
+
+    margin: auto;
+
+    padding: 70px 0 100px;
+
+}
+
+
+.section-label {
+
+    color: #39ff88;
+
+    letter-spacing: 3px;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    margin-bottom: 15px;
+
+}
+
+
+.graph-header h2 {
+
+    font-size: clamp(32px, 5vw, 55px);
+
+    margin: 0 0 15px;
+
+}
+
+
+.description {
+
+    max-width: 700px;
+
+    color: #9ca8b3;
+
+    line-height: 1.7;
+
+}
+
+
+/* GRAPH CARD */
+
+.graph-card {
+
+    margin-top: 45px;
+
+    padding: 35px;
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.08),
+            rgba(255,255,255,0.025)
+        );
+
+    border: 1px solid
+        rgba(255,255,255,0.1);
+
+    box-shadow:
+        0 30px 80px
+        rgba(0,0,0,0.35);
+
+}
+
+
+.chart-wrapper {
+
+    position: relative;
+
+    width: 100%;
+
+    height: 550px;
+
+}
+
+
+/* INDICATORS */
+
+.indicator-container {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 15px;
+
+    margin-top: 20px;
+
+}
+
+
+.indicator {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 20px;
+
+    background:
+        rgba(255,255,255,0.04);
+
+    border: 1px solid
+        rgba(255,255,255,0.08);
+
+    border-radius: 15px;
+
+}
+
+
+.indicator h3 {
+
+    margin: 0 0 5px;
+
+    font-size: 15px;
+
+}
+
+
+.indicator p {
+
+    margin: 0;
+
+    color: #8e9aa5;
+
+    font-size: 12px;
+
+}
+
+
+.indicator-dot {
+
+    width: 12px;
+
+    height: 12px;
+
+    min-width: 12px;
+
+    border-radius: 50%;
+
+}
+
+
+/* DIFFERENT COLORS */
+
+.temperature .indicator-dot {
+
+    background: #39ff88;
+
+    box-shadow:
+        0 0 12px #39ff88;
+
+}
+
+
+.sea .indicator-dot {
+
+    background: #38bdf8;
+
+    box-shadow:
+        0 0 12px #38bdf8;
+
+}
+
+
+.co2 .indicator-dot {
+
+    background: #ff4d6d;
+
+    box-shadow:
+        0 0 12px #ff4d6d;
+
+}
+
+
+.forest .indicator-dot {
+
+    background: #f59e0b;
+
+    box-shadow:
+        0 0 12px #f59e0b;
+
+}
+
+
+/* MESSAGE */
+
+.message-section {
+
+    width: 90%;
+
+    max-width: 900px;
+
+    margin: 50px auto 120px;
+
+}
+
+
+.message-section h2 {
+
+    font-size:
+        clamp(30px, 5vw, 55px);
+
+    line-height: 1.1;
+
+}
+
+
+.message-section p:last-child {
+
+    color: #9ca8b3;
+
+    line-height: 1.8;
+
+    max-width: 700px;
+
+}
+
+
+/* FOOTER */
+
+footer {
+
+    padding: 50px 20px;
+
+    text-align: center;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,0.08);
+
+}
+
+
+footer p {
+
+    font-weight: 700;
+
+    letter-spacing: 3px;
+
+}
+
+
+footer span {
+
+    color: #77828d;
+
+    font-size: 13px;
+
+}
+
+
+/* MOBILE */
+
+@media (max-width: 800px) {
+
+    .indicator-container {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+
+    .chart-wrapper {
+
+        height: 400px;
+
+    }
+
+
+    .graph-card {
+
+        padding: 20px;
+
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .indicator-container {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .chart-wrapper {
+
+        height: 350px;
+
+    }
+
+}
+
+/* ========================================
+   OUR TEAM SECTION
+======================================== */
+
+.team-section {
+    min-height: 100vh;
+    padding: 120px 8%;
+    background: #07100c;
+    color: white;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    overflow: hidden;
+}
+
+
+/* ========================================
+   HEADER
+======================================== */
+
+.team-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.team-header > span {
+    color: #8fa99a;
+    font-size: 13px;
+    letter-spacing: 4px;
+}
+
+.team-header h2 {
+    font-size: clamp(45px, 7vw, 90px);
+    margin: 12px 0;
+    font-weight: 700;
+}
+
+.team-header h2 span {
+    color: #7cff9b;
+    font-size: inherit;
+    letter-spacing: normal;
+}
+
+.team-header p {
+    color: #a8b5ad;
+    font-size: 16px;
+}
+
+
+/* ========================================
+   TEAM SLIDER
+======================================== */
+
+.team-slider {
+    width: 100%;
+    max-width: 1000px;
+
+    margin: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 40px;
+}
+
+
+.team-track {
+    width: 650px;
+    min-height: 430px;
+
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* ========================================
+   TEAM CARD
+======================================== */
+
+.team-card {
+    position: absolute;
+
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+
+    gap: 45px;
+
+    opacity: 0;
+
+    transform: translateX(100px) scale(.95);
+
+    pointer-events: none;
+
+    transition:
+        opacity .5s ease,
+        transform .6s cubic-bezier(.22,1,.36,1);
+}
+
+
+.team-card.active {
+    opacity: 1;
+
+    transform:
+        translateX(0)
+        scale(1);
+
+    pointer-events: auto;
+}
+
+
+/* ========================================
+   TEAM IMAGE
+======================================== */
+
+.team-image {
+    width: 280px;
+    height: 360px;
+
+    flex-shrink: 0;
+
+    overflow: hidden;
+
+    border-radius: 20px;
+
+    border: 1px solid rgba(124,255,155,.25);
+
+    background: #101b15;
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.35);
+}
+
+
+.team-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: transform .6s ease;
+}
+
+
+.team-card:hover .team-image img {
+    transform: scale(1.06);
+}
+
+
+/* ========================================
+   TEAM INFORMATION
+======================================== */
+
+.team-info h3 {
+    font-size: 42px;
+
+    margin: 0 0 8px;
+
+    letter-spacing: 1px;
+}
+
+
+.team-info h4 {
+    color: #7cff9b;
+
+    font-size: 16px;
+
+    margin-bottom: 20px;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+}
+
+
+.team-info p {
+    color: #a8b5ad;
+
+    line-height: 1.7;
+
+    max-width: 300px;
+}
+
+
+/* ========================================
+   ARROW BUTTON
+======================================== */
+
+.team-btn {
+    width: 55px;
+    height: 55px;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(124,255,155,.4);
+
+    background: transparent;
+
+    color: white;
+
+    font-size: 20px;
+
+    cursor: pointer;
+
+    transition:
+        background .3s ease,
+        color .3s ease,
+        transform .3s ease;
+
+    z-index: 10;
+}
+
+
+.team-btn:hover {
+    background: #7cff9b;
+
+    color: #07100c;
+
+    transform: scale(1.1);
+}
+
+
+/* ========================================
+   SLIDER DOTS
+======================================== */
+
+.team-dots {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-top: 35px;
+}
+
+
+.team-dot {
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #405048;
+
+    cursor: pointer;
+
+    transition: all .3s ease;
+}
+
+
+.team-dot.active-dot {
+    width: 28px;
+
+    border-radius: 10px;
+
+    background: #7cff9b;
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 768px) {
+
+    .team-section {
+        padding: 90px 20px;
+    }
+
+
+    .team-header {
+        margin-bottom: 30px;
+    }
+
+
+    .team-slider {
+        gap: 8px;
+    }
+
+
+    .team-track {
+        width: 100%;
+
+        min-height: 600px;
+    }
+
+
+    .team-card {
+        flex-direction: column;
+
+        text-align: center;
+
+        gap: 25px;
+    }
+
+
+    .team-image {
+        width: 220px;
+        height: 280px;
+    }
+
+
+    .team-info h3 {
+        font-size: 30px;
+    }
+
+
+    .team-info p {
+        margin: auto;
+    }
+
+
+    .team-btn {
+        width: 45px;
+        height: 45px;
+
+        flex-shrink: 0;
+    }
+
+}
+
+/* =========================
+   VISITOR MESSAGE
+========================= */
+
+.hero-visitor {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin-top: 22px;
+
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 9px;
+    letter-spacing: 1.8px;
+
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.hero-visitor img {
+    height: 20px;
+    width: auto;
+    display: block;
+}
+
+.visitor-dot {
+    width: 5px;
+    height: 5px;
+    flex-shrink: 0;
+
+    border-radius: 50%;
+    background: #7ddc8a;
+
+    box-shadow: 0 0 8px rgba(125, 220, 138, 0.8);
+
+    animation: visitorPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes visitorPulse {
+    0%, 100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.3;
+    }
+}
