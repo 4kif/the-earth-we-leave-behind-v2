@@ -2589,3 +2589,310 @@ nav {
     }
 
 }
+
+/* ==================================================
+   3 DOT NAVIGATION
+================================================== */
+
+html {
+    scroll-behavior: auto;
+}
+
+body {
+    overflow: hidden;
+}
+
+
+/* =========================
+   HIDE OLD NAVIGATION
+========================= */
+
+.nav-links,
+.nav-button {
+    display: none;
+}
+
+
+/* =========================
+   MENU BUTTON
+========================= */
+
+.menu-toggle {
+
+    width: 48px;
+    height: 48px;
+
+    border: 1px solid rgba(255,255,255,0.2);
+
+    background: rgba(5,8,6,0.65);
+
+    backdrop-filter: blur(15px);
+
+    border-radius: 50%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 4px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+    z-index: 2000;
+}
+
+
+.menu-toggle span {
+
+    width: 4px;
+    height: 4px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    transition: 0.3s;
+}
+
+
+.menu-toggle:hover {
+
+    border-color: #8ccf63;
+
+    transform: scale(1.08);
+}
+
+
+.menu-toggle:hover span {
+
+    background: #8ccf63;
+}
+
+
+/* =========================
+   DOT MENU
+========================= */
+
+.dot-menu {
+
+    position: fixed;
+
+    top: 95px;
+
+    right: 6%;
+
+    width: 260px;
+
+    padding: 25px;
+
+    background: rgba(7,12,8,0.95);
+
+    backdrop-filter: blur(25px);
+
+    border: 1px solid rgba(140,207,99,0.25);
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,0.45);
+
+    z-index: 1500;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transform:
+        translateY(-15px)
+        scale(0.96);
+
+    transform-origin: top right;
+
+    transition:
+        opacity .3s ease,
+        transform .3s ease,
+        visibility .3s;
+}
+
+
+.dot-menu.active {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+
+/* MENU TITLE */
+
+.menu-title {
+
+    color: #8ccf63;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 18px;
+
+    padding-bottom: 15px;
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,0.1);
+}
+
+
+/* MENU LINKS */
+
+.dot-menu a {
+
+    display: block;
+
+    padding: 13px 5px;
+
+    color: #c4ccc5;
+
+    font-family:
+        "Space Grotesk",
+        sans-serif;
+
+    font-size: 11px;
+
+    letter-spacing: 1px;
+
+    transition:
+        color .25s ease,
+        padding-left .25s ease;
+}
+
+
+.dot-menu a:hover {
+
+    color: #8ccf63;
+
+    padding-left: 10px;
+}
+
+
+/* ==================================================
+   PAGE SYSTEM
+================================================== */
+
+/*
+   Semua section jadi "page".
+   Hanya section yang aktif akan dipaparkan.
+*/
+
+body > section {
+
+    display: none;
+
+    min-height: 100vh;
+
+    height: 100vh;
+
+    overflow-y: auto;
+
+    overflow-x: hidden;
+}
+
+
+body > section.page-active {
+
+    display: flex;
+
+}
+
+
+/* HERO */
+
+body > section.hero.page-active {
+
+    display: flex;
+
+}
+
+
+/* ==================================================
+   PAGE TRANSITION
+================================================== */
+
+@keyframes pageIn {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(20px)
+            scale(.98);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
+}
+
+
+.page-active {
+
+    animation:
+        pageIn .5s ease;
+}
+
+
+/* ==================================================
+   KEEP TEAM PAGE
+================================================== */
+
+.team-section.page-active {
+
+    display: flex;
+}
+
+
+/* ==================================================
+   MOBILE MENU
+================================================== */
+
+@media (max-width: 700px) {
+
+    .menu-toggle {
+
+        width: 43px;
+
+        height: 43px;
+    }
+
+
+    .dot-menu {
+
+        top: 85px;
+
+        right: 5%;
+
+        width: 240px;
+
+        max-height: 75vh;
+
+        overflow-y: auto;
+    }
+
+}
