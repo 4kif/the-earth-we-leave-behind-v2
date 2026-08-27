@@ -1,517 +1,874 @@
-/* ==================================================
-   PAGE NAVIGATION
-================================================== */
+/* =========================================================
+   THE EARTH WE LEAVE BEHIND
+   MAIN JAVASCRIPT
+========================================================= */
 
-const mainNav =
-    document.getElementById("mainNav");
+document.addEventListener("DOMContentLoaded", () => {
 
-const menuToggle =
-    document.getElementById("menuToggle");
+    /* =====================================================
+       1. NAVBAR SCROLL EFFECT
+    ===================================================== */
 
-const dotMenu =
-    document.getElementById("dotMenu");
+    const nav = document.querySelector("nav");
 
-const pages =
-    document.querySelectorAll("body > section");
+    function handleNavbar() {
 
-const menuLinks =
-    document.querySelectorAll(".dot-menu a");
+        if (!nav) return;
 
-const exploreButtons =
-    document.querySelectorAll(".explore-button");
+        if (window.scrollY > 50) {
+
+            nav.style.background = "rgba(5, 8, 6, 0.92)";
+            nav.style.backdropFilter = "blur(20px)";
+            nav.style.borderBottomColor =
+                "rgba(140, 207, 99, 0.18)";
+
+        } else {
+
+            nav.style.background = "rgba(5, 8, 6, 0.7)";
+            nav.style.backdropFilter = "blur(15px)";
+            nav.style.borderBottomColor =
+                "rgba(255,255,255,0.08)";
+        }
+    }
+
+    window.addEventListener("scroll", handleNavbar);
+    handleNavbar();
 
 
+    /* =====================================================
+       2. SMOOTH SCROLL FOR INTERNAL LINKS
+    ===================================================== */
 
-/* ==================================================
-   SHOW PAGE
-================================================== */
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
 
-function showPage(id, showNavigation = true) {
+        link.addEventListener("click", function (event) {
 
-    const target =
-        document.querySelector(id);
+            const targetId = this.getAttribute("href");
 
-    if (!target) return;
+            if (!targetId || targetId === "#") return;
 
+            const target = document.querySelector(targetId);
 
-    /* REMOVE ACTIVE FROM ALL */
+            if (!target) return;
 
-    pages.forEach((page) => {
+            event.preventDefault();
 
-        page.classList.remove("page-active");
+            const navHeight = nav ? nav.offsetHeight : 0;
+
+            const targetPosition =
+                target.getBoundingClientRect().top +
+                window.scrollY -
+                navHeight;
+
+            window.scrollTo({
+                top: targetPosition,
+                behavior: "smooth"
+            });
+
+        });
 
     });
 
 
-    /* SHOW TARGET */
+    /* =====================================================
+       3. ACTIVE NAVIGATION
+    ===================================================== */
 
-    target.classList.add("page-active");
-
-
-    /* CLOSE MENU */
-
-    if (dotMenu) {
-
-        dotMenu.classList.remove("active");
-
-    }
-
-
-    /* SHOW / HIDE NAVIGATION */
-
-    if (showNavigation) {
-
-        mainNav.classList.add("menu-visible");
-
-    } else {
-
-        mainNav.classList.remove("menu-visible");
-
-    }
-
-
-    /* RESET PAGE POSITION */
-
-    target.scrollTop = 0;
-
-
-    /* UPDATE URL */
-
-    history.replaceState(
-        null,
-        "",
-        id
+    const sections = document.querySelectorAll(
+        "section[id]"
     );
 
-}
-
-
-
-/* ==================================================
-   EXPLORE BUTTON
-================================================== */
-
-exploreButtons.forEach((button) => {
-
-    button.addEventListener(
-        "click",
-        function(event) {
-
-            event.preventDefault();
-
-            const target =
-                this.getAttribute("href");
-
-            showPage(
-                target,
-                true
-            );
-
-        }
+    const navLinks = document.querySelectorAll(
+        '.nav-links a[href^="#"]'
     );
 
-});
+    function updateActiveNav() {
 
+        let currentSection = "";
 
+        sections.forEach(section => {
 
-/* ==================================================
-   3 DOT MENU
-================================================== */
+            const sectionTop =
+                section.offsetTop - 150;
 
-if (menuToggle && dotMenu) {
+            const sectionBottom =
+                sectionTop + section.offsetHeight;
 
-    menuToggle.addEventListener(
-        "click",
-        function(event) {
-
-            event.stopPropagation();
-
-            dotMenu.classList.toggle(
-                "active"
-            );
-
-        }
-    );
-
-}
-
-
-
-/* ==================================================
-   MENU LINKS
-================================================== */
-
-menuLinks.forEach((link) => {
-
-    link.addEventListener(
-        "click",
-        function(event) {
-
-            event.preventDefault();
-
-            const target =
-                this.getAttribute("href");
-
-
-            /* HOME */
-
-            if (target === "#home") {
-
-                showPage(
-                    "#home",
-                    false
-                );
-
-                return;
-
+            if (
+                window.scrollY >= sectionTop &&
+                window.scrollY < sectionBottom
+            ) {
+                currentSection = section.id;
             }
 
+        });
 
-            /* OTHER PAGES */
+        navLinks.forEach(link => {
 
-            showPage(
-                target,
-                true
-            );
+            link.classList.remove("active-nav");
 
-        }
+            const href =
+                link.getAttribute("href");
+
+            if (href === "#" + currentSection) {
+                link.classList.add("active-nav");
+            }
+
+        });
+    }
+
+    window.addEventListener(
+        "scroll",
+        updateActiveNav
     );
 
-});
+    updateActiveNav();
 
 
+    /* =====================================================
+       4. CAUSES SLIDER
+    ===================================================== */
 
-/* ==================================================
-   CLOSE MENU OUTSIDE
-================================================== */
+    const slides = document.querySelector(".slides");
+    const slideItems = document.querySelectorAll(".slide");
 
-document.addEventListener(
-    "click",
-    function(event) {
+    const prevButton =
+        document.querySelector(".slider-btn.prev");
 
-        if (
-            dotMenu &&
-            menuToggle &&
-            !dotMenu.contains(event.target) &&
-            !menuToggle.contains(event.target)
-        ) {
+    const nextButton =
+        document.querySelector(".slider-btn.next");
 
-            dotMenu.classList.remove(
-                "active"
-            );
+    let currentSlide = 0;
 
-        }
+    function updateCausesSlider() {
+
+        if (!slides || slideItems.length === 0) return;
+
+        slides.style.transform =
+            `translateX(-${currentSlide * 100}%)`;
 
     }
-);
 
+    function nextSlide() {
 
+        if (slideItems.length === 0) return;
 
-/* ==================================================
-   BACK HOME
-================================================== */
+        currentSlide++;
 
-const backHome =
-    document.querySelector(".back-home");
-
-
-if (backHome) {
-
-    backHome.addEventListener(
-        "click",
-        function(event) {
-
-            event.preventDefault();
-
-            showPage(
-                "#home",
-                false
-            );
-
+        if (currentSlide >= slideItems.length) {
+            currentSlide = 0;
         }
-    );
 
-}
+        updateCausesSlider();
+    }
+
+    function previousSlide() {
+
+        if (slideItems.length === 0) return;
+
+        currentSlide--;
+
+        if (currentSlide < 0) {
+            currentSlide = slideItems.length - 1;
+        }
+
+        updateCausesSlider();
+    }
+
+    if (nextButton) {
+        nextButton.addEventListener(
+            "click",
+            nextSlide
+        );
+    }
+
+    if (prevButton) {
+        prevButton.addEventListener(
+            "click",
+            previousSlide
+        );
+    }
+
+    updateCausesSlider();
 
 
+    /* =====================================================
+       5. CAUSES SLIDER - KEYBOARD
+    ===================================================== */
 
-/* ==================================================
-   INITIAL PAGE
-================================================== */
+    document.addEventListener("keydown", event => {
 
-window.addEventListener(
-    "load",
-    function() {
+        if (event.key === "ArrowRight") {
+            nextSlide();
+        }
 
-        /*
-            ALWAYS START AT HOME.
-            3 DOTS ARE HIDDEN.
-        */
+        if (event.key === "ArrowLeft") {
+            previousSlide();
+        }
 
-        showPage(
-            "#home",
-            false
+    });
+
+
+    /* =====================================================
+       6. CAUSES SLIDER - TOUCH SWIPE
+    ===================================================== */
+
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    const causesSlider =
+        document.querySelector(".causes-slider");
+
+    if (causesSlider) {
+
+        causesSlider.addEventListener(
+            "touchstart",
+            event => {
+
+                touchStartX =
+                    event.changedTouches[0].screenX;
+
+            },
+            { passive: true }
+        );
+
+        causesSlider.addEventListener(
+            "touchend",
+            event => {
+
+                touchEndX =
+                    event.changedTouches[0].screenX;
+
+                const difference =
+                    touchStartX - touchEndX;
+
+                if (Math.abs(difference) < 50) return;
+
+                if (difference > 0) {
+                    nextSlide();
+                } else {
+                    previousSlide();
+                }
+
+            },
+            { passive: true }
         );
 
     }
-);
 
 
+    /* =====================================================
+       7. ACTION CHECKLIST
+    ===================================================== */
 
-/* ==================================================
-   CHECKLIST
-================================================== */
-
-const checkboxes =
-    document.querySelectorAll(
-        '.checklist input[type="checkbox"]'
-    );
-
-
-const progressText =
-    document.getElementById("progress");
-
-
-const progressFill =
-    document.getElementById(
-        "progress-fill"
-    );
-
-
-function updateProgress() {
-
-    if (
-        !progressText ||
-        !progressFill
-    ) return;
-
-
-    const completed =
+    const checkboxes =
         document.querySelectorAll(
-            '.checklist input[type="checkbox"]:checked'
-        ).length;
+            '.checklist input[type="checkbox"]'
+        );
+
+    const progressText =
+        document.getElementById("progress");
+
+    const progressFill =
+        document.getElementById("progress-fill");
+
+    function updateProgress() {
+
+        if (
+            !checkboxes.length ||
+            !progressText ||
+            !progressFill
+        ) return;
+
+        const total =
+            checkboxes.length;
+
+        const completed =
+            document.querySelectorAll(
+                '.checklist input[type="checkbox"]:checked'
+            ).length;
+
+        const percentage =
+            (completed / total) * 100;
+
+        progressText.textContent =
+            `${completed} / ${total}`;
+
+        progressFill.style.width =
+            `${percentage}%`;
+
+    }
+
+    checkboxes.forEach(checkbox => {
+
+        checkbox.addEventListener(
+            "change",
+            updateProgress
+        );
+
+    });
+
+    updateProgress();
 
 
-    const total =
-        checkboxes.length;
+    /* =====================================================
+       8. CHECKLIST LABEL ANIMATION
+    ===================================================== */
+
+    const checklistLabels =
+        document.querySelectorAll(
+            ".checklist label"
+        );
+
+    checklistLabels.forEach(label => {
+
+        const checkbox =
+            label.querySelector("input");
+
+        if (!checkbox) return;
+
+        checkbox.addEventListener(
+            "change",
+            () => {
+
+                if (checkbox.checked) {
+
+                    label.style.borderColor =
+                        "#8ccf63";
+
+                    label.style.background =
+                        "rgba(140, 207, 99, 0.06)";
+
+                } else {
+
+                    label.style.borderColor =
+                        "#303730";
+
+                    label.style.background =
+                        "transparent";
+
+                }
+
+            }
+        );
+
+    });
 
 
-    const percentage =
-        total > 0
-        ? (completed / total) * 100
-        : 0;
+    /* =====================================================
+       9. DATA COUNTER
+    ===================================================== */
 
+    const counter =
+        document.querySelector(".counter");
 
-    progressText.textContent =
-        `${completed} / ${total}`;
+    let counterStarted = false;
 
+    function animateCounter() {
 
-    progressFill.style.width =
-        `${percentage}%`;
+        if (!counter || counterStarted) return;
 
-}
-
-
-checkboxes.forEach((checkbox) => {
-
-    checkbox.addEventListener(
-        "change",
-        updateProgress
-    );
-
-});
-
-
-
-/* ==================================================
-   COUNTER
-================================================== */
-
-const counters =
-    document.querySelectorAll(
-        ".counter"
-    );
-
-
-let counterStarted = false;
-
-
-function startCounters() {
-
-    if (counterStarted) return;
-
-    counterStarted = true;
-
-
-    counters.forEach((counter) => {
+        counterStarted = true;
 
         const target =
             parseFloat(
-                counter.getAttribute(
-                    "data-target"
-                )
+                counter.dataset.target || "1.5"
             );
 
+        const duration = 1500;
 
-        let current = 0;
+        const startTime =
+            performance.now();
 
-        const increment =
-            target / 50;
+        function updateCounter(currentTime) {
 
+            const elapsed =
+                currentTime - startTime;
 
-        function updateCounter() {
+            const progress =
+                Math.min(elapsed / duration, 1);
 
-            current += increment;
+            const eased =
+                1 - Math.pow(1 - progress, 3);
 
+            const value =
+                target * eased;
 
-            if (current < target) {
+            counter.textContent =
+                value.toFixed(1);
 
-                counter.textContent =
-                    current.toFixed(1);
-
+            if (progress < 1) {
                 requestAnimationFrame(
                     updateCounter
                 );
-
-            } else {
-
-                counter.textContent =
-                    target.toFixed(1);
-
             }
 
         }
 
+        requestAnimationFrame(
+            updateCounter
+        );
+    }
 
-        updateCounter();
+
+    /* =====================================================
+       10. INTERSECTION OBSERVER
+    ===================================================== */
+
+    const dataSection =
+        document.querySelector(".data-section");
+
+    if (dataSection && counter) {
+
+        const counterObserver =
+            new IntersectionObserver(
+                entries => {
+
+                    entries.forEach(entry => {
+
+                        if (entry.isIntersecting) {
+                            animateCounter();
+                            counterObserver.disconnect();
+                        }
+
+                    });
+
+                },
+                {
+                    threshold: 0.35
+                }
+            );
+
+        counterObserver.observe(dataSection);
+
+    }
+
+
+    /* =====================================================
+       11. SCROLL REVEAL
+    ===================================================== */
+
+    const revealElements =
+        document.querySelectorAll(
+            ".info-card, " +
+            ".impact-item, " +
+            ".sustainability-card, " +
+            ".solution-card, " +
+            ".stat, " +
+            ".team-card"
+        );
+
+    revealElements.forEach(element => {
+
+        element.style.opacity = "0";
+        element.style.transform =
+            "translateY(35px)";
+
+        element.style.transition =
+            "opacity .7s ease, transform .7s ease";
 
     });
 
-}
+    const revealObserver =
+        new IntersectionObserver(
+            entries => {
 
+                entries.forEach(entry => {
 
+                    if (!entry.isIntersecting) return;
 
-/* ==================================================
-   START COUNTER WHEN DATA PAGE OPENS
-================================================== */
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform =
+                        "translateY(0)";
 
-const originalShowPage =
-    showPage;
+                    revealObserver.unobserve(
+                        entry.target
+                    );
 
+                });
 
-window.showPage =
-    function(id, showNavigation = true) {
-
-        originalShowPage(
-            id,
-            showNavigation
+            },
+            {
+                threshold: 0.12
+            }
         );
 
+    revealElements.forEach(element => {
+        revealObserver.observe(element);
+    });
 
-        if (id === "#data") {
 
-            startCounters();
+    /* =====================================================
+       12. STAGGER CARD ANIMATION
+    ===================================================== */
 
+    const cardGroups = [
+        ".cards .info-card",
+        ".sustainability-grid .sustainability-card",
+        ".solution-grid .solution-card",
+        ".stats .stat"
+    ];
+
+    cardGroups.forEach(selector => {
+
+        const cards =
+            document.querySelectorAll(selector);
+
+        cards.forEach((card, index) => {
+
+            card.style.transitionDelay =
+                `${index * 0.08}s`;
+
+        });
+
+    });
+
+
+    /* =====================================================
+       13. MOUSE PARALLAX - HERO
+    ===================================================== */
+
+    const hero =
+        document.querySelector(".hero");
+
+    const heroContent =
+        document.querySelector(".hero-content");
+
+    if (
+        hero &&
+        heroContent &&
+        window.innerWidth > 768
+    ) {
+
+        hero.addEventListener(
+            "mousemove",
+            event => {
+
+                const x =
+                    (event.clientX /
+                    window.innerWidth - 0.5);
+
+                const y =
+                    (event.clientY /
+                    window.innerHeight - 0.5);
+
+                heroContent.style.transform =
+                    `translate(${x * 10}px, ${y * 10}px)`;
+
+            }
+        );
+
+        hero.addEventListener(
+            "mouseleave",
+            () => {
+
+                heroContent.style.transform =
+                    "translate(0, 0)";
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       14. SUSTAINABILITY CARD TILT
+    ===================================================== */
+
+    const sustainabilityCards =
+        document.querySelectorAll(
+            ".sustainability-card"
+        );
+
+    if (window.innerWidth > 900) {
+
+        sustainabilityCards.forEach(card => {
+
+            card.addEventListener(
+                "mousemove",
+                event => {
+
+                    const rect =
+                        card.getBoundingClientRect();
+
+                    const x =
+                        event.clientX - rect.left;
+
+                    const y =
+                        event.clientY - rect.top;
+
+                    const centerX =
+                        rect.width / 2;
+
+                    const centerY =
+                        rect.height / 2;
+
+                    const rotateX =
+                        (y - centerY) / 25;
+
+                    const rotateY =
+                        (centerX - x) / 25;
+
+                    card.style.transform =
+                        `translateY(-8px)
+                         rotateX(${rotateX}deg)
+                         rotateY(${rotateY}deg)`;
+
+                }
+            );
+
+            card.addEventListener(
+                "mouseleave",
+                () => {
+
+                    card.style.transform =
+                        "translateY(0) rotateX(0) rotateY(0)";
+
+                }
+            );
+
+        });
+
+    }
+
+
+    /* =====================================================
+       15. TEAM SLIDER
+    ===================================================== */
+
+    const teamCards =
+        document.querySelectorAll(
+            ".team-card"
+        );
+
+    const teamDots =
+        document.querySelectorAll(
+            ".team-dot"
+        );
+
+    let currentTeam = 0;
+
+    window.showTeam = function(index) {
+
+        if (!teamCards.length) return;
+
+        if (index < 0) {
+            index = teamCards.length - 1;
         }
+
+        if (index >= teamCards.length) {
+            index = 0;
+        }
+
+        currentTeam = index;
+
+        teamCards.forEach(
+            (card, i) => {
+
+                card.classList.toggle(
+                    "active",
+                    i === currentTeam
+                );
+
+            }
+        );
+
+        teamDots.forEach(
+            (dot, i) => {
+
+                dot.classList.toggle(
+                    "active-dot",
+                    i === currentTeam
+                );
+
+            }
+        );
 
     };
 
 
+    window.changeTeam = function(direction) {
 
-/* ==================================================
-   OUR TEAM SLIDER
-================================================== */
+        showTeam(
+            currentTeam + direction
+        );
 
-let currentTeam = 0;
-
-
-const teamCards =
-    document.querySelectorAll(
-        ".team-card"
-    );
+    };
 
 
-const teamDots =
-    document.querySelectorAll(
-        ".team-dot"
-    );
+    showTeam(0);
 
 
+    /* =====================================================
+       16. TEAM AUTO SLIDE
+    ===================================================== */
 
-function showTeam(index) {
+    let teamAutoSlide =
+        setInterval(() => {
 
-    if (
-        !teamCards.length
-    ) return;
+            changeTeam(1);
+
+        }, 6000);
 
 
-    if (
-        index >= teamCards.length
-    ) {
+    const teamSection =
+        document.querySelector(".team-section");
 
-        currentTeam = 0;
+    if (teamSection) {
+
+        teamSection.addEventListener(
+            "mouseenter",
+            () => {
+
+                clearInterval(
+                    teamAutoSlide
+                );
+
+            }
+        );
+
+        teamSection.addEventListener(
+            "mouseleave",
+            () => {
+
+                teamAutoSlide =
+                    setInterval(() => {
+
+                        changeTeam(1);
+
+                    }, 6000);
+
+            }
+        );
 
     }
 
-    else if (
-        index < 0
-    ) {
 
-        currentTeam =
-            teamCards.length - 1;
+    /* =====================================================
+       17. BUTTON RIPPLE EFFECT
+    ===================================================== */
+
+    const buttons =
+        document.querySelectorAll(
+            ".primary-button, " +
+            ".secondary-button, " +
+            ".nav-button"
+        );
+
+    buttons.forEach(button => {
+
+        button.addEventListener(
+            "click",
+            function () {
+
+                this.style.transform =
+                    "scale(0.97)";
+
+                setTimeout(() => {
+
+                    this.style.transform =
+                        "";
+
+                }, 150);
+
+            }
+        );
+
+    });
+
+
+    /* =====================================================
+       18. IMAGE LOAD EFFECT
+    ===================================================== */
+
+    const images =
+        document.querySelectorAll(
+            "img"
+        );
+
+    images.forEach(img => {
+
+        img.addEventListener(
+            "load",
+            () => {
+
+                img.classList.add(
+                    "image-loaded"
+                );
+
+            }
+        );
+
+    });
+
+
+    /* =====================================================
+       19. BACK TO TOP
+    ===================================================== */
+
+    const backToTop =
+        document.querySelector(
+            '.final-section a[href="#home"]'
+        );
+
+    if (backToTop) {
+
+        backToTop.addEventListener(
+            "click",
+            event => {
+
+                event.preventDefault();
+
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+
+            }
+        );
 
     }
 
-    else {
 
-        currentTeam = index;
+    /* =====================================================
+       20. REDUCE MOTION SUPPORT
+    ===================================================== */
+
+    const prefersReducedMotion =
+        window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+        );
+
+    if (prefersReducedMotion.matches) {
+
+        document.documentElement.style
+            .scrollBehavior = "auto";
+
+        revealElements.forEach(element => {
+
+            element.style.opacity = "1";
+            element.style.transform =
+                "none";
+            element.style.transition =
+                "none";
+
+        });
 
     }
 
 
-    teamCards.forEach(
-        (card, i) => {
+    /* =====================================================
+       21. CONSOLE MESSAGE
+    ===================================================== */
 
-            card.classList.toggle(
-                "active",
-                i === currentTeam
-            );
-
-        }
+    console.log(
+        "%cTHE EARTH WE LEAVE BEHIND",
+        "color:#8ccf63;font-size:20px;font-weight:bold;"
     );
 
-
-    teamDots.forEach(
-        (dot, i) => {
-
-            dot.classList.toggle(
-                "active-dot",
-                i === currentTeam
-            );
-
-        }
+    console.log(
+        "%cClimate change awareness website",
+        "color:#9da49d;font-size:12px;"
     );
 
-}
-
-
-
-function changeTeam(direction) {
-
-    showTeam(
-        currentTeam + direction
-    );
-
-}
-
-
-
-/* ==================================================
-   MAKE TEAM FUNCTIONS GLOBAL
-================================================== */
-
-window.showTeam =
-    showTeam;
-
-window.changeTeam =
-    changeTeam;
+});
